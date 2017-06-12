@@ -23,8 +23,6 @@ class ViewAttractionsComponentController{
     constructor($state,AttractionsService){
         this.$state = $state;
         this.AttractionsService = AttractionsService;
-        console.log("hi", attractions);
-
     }
 
     static get $inject(){
