@@ -13,6 +13,7 @@ import Middlewares from './config/middlewares';
 
 import AppContent from './components/app-content/app-content';
 import ViewAttractions from './components/view-attractions/view-attractions';
+import EnterJourney from './components/enter-journey/enter-journey';
 import AttractionsService from './services/attractions/attractions';
 
 let app = angular.module('app', [
@@ -20,6 +21,7 @@ let app = angular.module('app', [
     angularMaterial,
     ngMdIcons,
     AppContent.name,
+    EnterJourney.name,
     ViewAttractions.name,
     AttractionsService.name
 ]);
