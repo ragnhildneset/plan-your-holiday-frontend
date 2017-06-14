@@ -1,7 +1,7 @@
-<md-list>
+<ul class="list-group">
 
-    <md-list-item aria-label="Attraction" class="noright" ng-repeat="attraction in $ctrl.attractions">
+    <a href="#" class="list-group-item" ng-repeat="attraction in $ctrl.attractions">
         <p> {{attraction.title}} {{attraction.city}} </p>
-    <md-divider></md-divider>
+    </a>
 
-</md-list>
+</ul>

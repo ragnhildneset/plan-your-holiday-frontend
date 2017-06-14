@@ -17,7 +17,6 @@ import AttractionsService from './services/attractions/attractions';
 
 let app = angular.module('app', [
     uiRouter,
-    angularMaterial,
     ngMdIcons,
     AppContent.name,
     ViewAttractions.name,
