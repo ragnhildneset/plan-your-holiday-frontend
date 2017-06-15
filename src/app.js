@@ -6,6 +6,7 @@ import uiRouter from '@uirouter/angularjs';
 import angularMaterial from 'angular-material';
 import 'angular-material/angular-material.css';
 
+import bootstrap from 'angular-ui-bootstrap';
 import ngMdIcons from 'angular-material-icons';
 
 import Routes from './config/routes';
@@ -17,7 +18,8 @@ import AttractionsService from './services/attractions/attractions';
 
 let app = angular.module('app', [
     uiRouter,
-    ngMdIcons,
+    bootstrap,
+    angularMaterial,
     AppContent.name,
     ViewAttractions.name,
     AttractionsService.name
