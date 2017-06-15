@@ -48,12 +48,15 @@ background-color: #030033;
     margin: 0 auto;
     width: 100px;
     margin-top: -61px;
+    text-align: center;
 }
 .box-icon span {
     color: #fff;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+
+
 }
 .info h4 {
     font-size: 26px;
@@ -95,4 +98,13 @@ body {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+.glyphicon {
+    font-size: 60px;
+    position: inherit;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 120%;
+    display: inline-block;
+
 }
