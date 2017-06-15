@@ -2,6 +2,7 @@
 'use strict';
 
 import template from './app-header.template.html';
+import './app-header.style.css';
 
 class AppHeaderComponent {
     constructor(){
