@@ -8,6 +8,8 @@ import 'angular-material/angular-material.css';
 
 import bootstrap from 'angular-ui-bootstrap';
 import ngMdIcons from 'angular-material-icons';
+import animate from 'angular-animate';
+import datetimepicker from 'angular-bootstrap-datetimepicker';
 
 import Routes from './config/routes';
 import Middlewares from './config/middlewares';
@@ -21,6 +23,8 @@ let app = angular.module('app', [
     uiRouter,
     bootstrap,
     angularMaterial,
+    animate,
+    datetimepicker,
     AppContent.name,
     EnterJourney.name,
     ViewAttractions.name,

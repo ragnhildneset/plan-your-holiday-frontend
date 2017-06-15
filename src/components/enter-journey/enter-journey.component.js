@@ -3,7 +3,6 @@
 
 import template from './enter-journey.template.html';
 
-
 class EnterJourneyComponent {
     constructor(){
         this.controller = EnterJourneyComponentController;
