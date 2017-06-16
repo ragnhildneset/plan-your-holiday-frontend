@@ -15,6 +15,7 @@ import Middlewares from './config/middlewares';
 import AppContent from './components/app-content/app-content';
 import ViewAttractions from './components/view-attractions/view-attractions';
 import AttractionsService from './services/attractions/attractions';
+import AppGetstarted from './components/app-getstarted/app-getstarted';
 
 let app = angular.module('app', [
     uiRouter,
@@ -22,7 +23,8 @@ let app = angular.module('app', [
     angularMaterial,
     AppContent.name,
     ViewAttractions.name,
-    AttractionsService.name
+    AttractionsService.name,
+    AppGetstarted.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

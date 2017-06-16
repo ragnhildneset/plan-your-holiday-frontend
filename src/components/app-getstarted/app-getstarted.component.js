@@ -1,20 +1,18 @@
 
 'use strict';
 
-import template from './app-gestarted.template.html';
-import './app-gestarted.style.css';
+import template from './app-getstarted.template.html';
+import './app-getstarted.style.css';
 
 class AppGetstartedComponent {
     constructor(){
         this.controller = AppGetstartedComponentController;
         this.template = template;
-
     }
 
     static get name() {
         return 'appGetstarted';
     }
-
 }
 
 class AppGetstartedComponentController{
@@ -25,7 +23,6 @@ class AppGetstartedComponentController{
     static get $inject(){
         return ['$state'];
     }
-
 }
 
 

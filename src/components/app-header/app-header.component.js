@@ -8,13 +8,11 @@ class AppHeaderComponent {
     constructor(){
         this.controller = AppHeaderComponentController;
         this.template = template;
-
     }
 
     static get name() {
         return 'appHeader';
     }
-
 }
 
 class AppHeaderComponentController{
@@ -25,7 +23,6 @@ class AppHeaderComponentController{
     static get $inject(){
         return ['$state'];
     }
-
 }
 
 
