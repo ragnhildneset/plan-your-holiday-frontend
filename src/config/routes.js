@@ -4,7 +4,8 @@ import AttractionsComponent from '../components/view-attractions/view-attraction
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
-import EntryPageComponent from './../components/entry-page/entry-page'
+import EntryPageComponent from './../components/entry-page/entry-page';
+import LoginPageComponent from './../components/login-page/login-page';
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
@@ -25,6 +26,10 @@ export default function config ($stateProvider, $urlRouterProvider){
         .state('getstarted', {
             url: '/getstarted',
             component: GetStartedComponent.name
+        })
+        .state('login', {
+            url: '/login',
+            component: LoginPageComponent.name
         })
         .state('attractions', {
             url: '/attractions',

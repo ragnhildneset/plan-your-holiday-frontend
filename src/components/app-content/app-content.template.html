@@ -1,9 +1,17 @@
+<!-- The app-content describes the content with which the page is filled. It can be injected with any other page defined in the project. -->
+
 <div layout="row" layout-fill ng-cloak>
     <div layout="column" flex>
+
+        <!-- The app-header containing the navigation bar is injected into every page to maintain orientation-->
         <app-header></app-header>
         <ng-content flex layout-gt-sm="row">
             <span flex="20"></span>
-            <ui-view flex></ui-view>
+
+            <!-- The ui-view is the flexible panel which can be filled with variable content -->
+            <ui-view flex>
+
+            </ui-view>
             <span flex="20"></span>
         </ng-content>
     </div>

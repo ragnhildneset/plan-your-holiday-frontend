@@ -20,6 +20,10 @@ class AppHeaderComponentController{
         this.$state = $state;
     }
 
+    home () {
+      this.$state.go('home');
+    };
+
     static get $inject(){
         return ['$state'];
     }

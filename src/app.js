@@ -17,6 +17,7 @@ import ViewAttractions from './components/view-attractions/view-attractions';
 import AttractionsService from './services/attractions/attractions';
 import AppGetstarted from './components/app-getstarted/app-getstarted';
 import EntryPage from './components/entry-page/entry-page'
+import LoginPage from './components/login-page/login-page'
 
 let app = angular.module('app', [
     uiRouter,
@@ -26,7 +27,8 @@ let app = angular.module('app', [
     ViewAttractions.name,
     AttractionsService.name,
     AppGetstarted.name,
-    EntryPage.name
+    EntryPage.name,
+    LoginPage.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

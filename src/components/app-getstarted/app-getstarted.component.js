@@ -20,6 +20,10 @@ class AppGetstartedComponentController{
         this.$state = $state;
     }
 
+    login () {
+      this.$state.go('login');
+    };
+
     static get $inject(){
         return ['$state'];
     }
