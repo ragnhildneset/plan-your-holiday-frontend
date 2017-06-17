@@ -6,6 +6,8 @@ import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
 import EntryPageComponent from './../components/entry-page/entry-page';
 import LoginPageComponent from './../components/login-page/login-page';
+import PartnersComponent from './../components/partners/partners';
+import AboutPageComponent from './../components/about-page/about-page';
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
@@ -30,6 +32,14 @@ export default function config ($stateProvider, $urlRouterProvider){
         .state('login', {
             url: '/login',
             component: LoginPageComponent.name
+        })
+        .state('partners', {
+            url: '/partners',
+            component: PartnersComponent.name
+        })
+        .state('about', {
+            url: '/about',
+            component: AboutPageComponent.name
         })
         .state('attractions', {
             url: '/attractions',

@@ -24,6 +24,18 @@ class AppHeaderComponentController{
       this.$state.go('home');
     };
 
+    partners () {
+      this.$state.go('partners');
+    };
+
+    about () {
+      this.$state.go('about');
+    };
+
+    login () {
+      this.$state.go('login');
+    };
+
     static get $inject(){
         return ['$state'];
     }
