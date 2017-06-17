@@ -4,6 +4,7 @@ import AttractionsComponent from '../components/view-attractions/view-attraction
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
+import EntryPageComponent from './../components/entry-page/entry-page'
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
@@ -14,19 +15,22 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config ($stateProvider, $urlRouterProvider){
 
     // For any unmatched url, redirect to /home
-    /*$urlRouterProvider.otherwise("/home");*/
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
         .state('home', {
             url: '/home',
-            component: AppHeaderComponent.name,
-            /*resolve: {
-                attractions : resolveAttractions
-            }*/
+            component: EntryPageComponent.name
         })
         .state('getstarted', {
             url: '/getstarted',
-            /*component: GetStartedComponent.name*/
-            templateUrl: './../components/app-getstarted/app-getstarted.template.html'
+            component: GetStartedComponent.name
+        })
+        .state('attractions', {
+            url: '/attractions',
+            component: AttractionsComponent.name,
+            resolve: {
+              attractions : resolveAttractions
+          }
         });
 }

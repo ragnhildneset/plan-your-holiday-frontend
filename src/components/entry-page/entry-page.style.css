@@ -83,6 +83,7 @@ background-color: #030033;
     transition: all 0.5s ease 0s;
 }
 body {
+  background: url("https://www.meditainment.com/images/dmImage/SourceImage/holiday-beach.jpg") no-repeat center center fixed;
   /*-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
