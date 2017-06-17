@@ -19,7 +19,8 @@ export default function config ($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('home', {
             url: '/home',
-            component: AppHeaderComponent.name,
+            /*component: AppHeaderComponent.name,*/
+            templateUrl: './../components/app-header/app-header.template.html'
             /*resolve: {
                 attractions : resolveAttractions
             }*/
