@@ -1,9 +1,8 @@
 
 'use strict';
-
-import template from './app-getstarted.template.html';
 //SB: Importing the Servce for User 
-//import UserService from './../../services/user/user.service';
+import UserService from './../../services/users/user.service';
+import template from './app-getstarted.template.html';
 import './app-getstarted.style.css';
 
 class AppGetstartedComponent {
@@ -19,9 +18,26 @@ class AppGetstartedComponent {
 
 class AppGetstartedComponentController
 {
-    constructor($state){
+    constructor($state, UserService)
+    {
         this.$state = $state;
         this.UserService = UserService;
+    }
+
+    signup()
+    {
+       
+        //SB: The variables this.login.username are inicialized in the inputfield @ the .html file
+        let username = this.signup.username;
+        let email = this.signup.email;
+        let loginid = this.signup.loginid;
+        let password = this.signup.password;
+        let birthdate = this.signup.birthdate;
+        let density = this.signup.density;
+        
+        this.UserService.register(username, email, loginid, password, birthdate, density).then(()=> {
+            this.$state.go('home',{});
+        });
     }
 
     login () {
@@ -29,7 +45,7 @@ class AppGetstartedComponentController
     };
 
     static get $inject(){
-        return ['$state'];
+        return ['$state',UserService.name];
     }
 }
 
