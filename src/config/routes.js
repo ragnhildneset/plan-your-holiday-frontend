@@ -4,6 +4,7 @@ import AttractionsComponent from '../components/view-attractions/view-attraction
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
+
 import EntryPageComponent from './../components/entry-page/entry-page';
 import LoginPageComponent from './../components/login-page/login-page.component';
 import PartnersComponent from './../components/partners/partners';
@@ -13,6 +14,9 @@ resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
     return attractionsService.list();
 }
+
+
+
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config ($stateProvider, $urlRouterProvider){

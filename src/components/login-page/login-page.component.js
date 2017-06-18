@@ -1,13 +1,15 @@
 
 'use strict';
 
-import template from './login-page.template.html';
-import './login-page.style.css';
 //SB: Importing User Service
 import UserService from './../../services/users/user.service';
+import template from './login-page.template.html';
+import './login-page.style.css';
+
 
 class LoginPageComponent {
     constructor(){
+          console.log('User loaded 2');
         //SB: This is what manages the logic
         this.controller = LoginPageComponentController;
         //SB: This is what manages the UI
@@ -24,7 +26,7 @@ class LoginPageComponentController
     constructor($state,UserService)
     {
         this.$state = $state;
-        console.log($state);
+        
         this.UserService = UserService;
         
     }
@@ -53,7 +55,7 @@ class LoginPageComponentController
     };
 
     static get $inject(){
-        return ['$state'];
+        return ['$state', UserService.name];
     }
 }
 

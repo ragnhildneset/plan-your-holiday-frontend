@@ -9,6 +9,8 @@ import 'angular-material/angular-material.css';
 import bootstrap from 'angular-ui-bootstrap';
 import ngMdIcons from 'angular-material-icons';
 
+import UserService from './services/users/user';
+
 import Routes from './config/routes';
 import Middlewares from './config/middlewares';
 
@@ -20,7 +22,7 @@ import EntryPage from './components/entry-page/entry-page';
 import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
-import UserService from './services/users/user';
+
 
 let app = angular.module('app', [
     uiRouter,
