@@ -8,8 +8,9 @@ import './login-page.style.css';
 
 
 class LoginPageComponent {
-    constructor(){
-          console.log('User loaded 2');
+    constructor()
+    {
+        
         //SB: This is what manages the logic
         this.controller = LoginPageComponentController;
         //SB: This is what manages the UI
@@ -25,8 +26,12 @@ class LoginPageComponentController
 {
     constructor($state,UserService)
     {
+<<<<<<< HEAD
         this.$state = $state;
 
+=======
+        this.$state = $state;        
+>>>>>>> 72897b7b04915db37c6c9cf5202ebae0dc5a033d
         this.UserService = UserService;
 
     }
@@ -44,9 +49,9 @@ class LoginPageComponentController
         //SB: The variables this.login.username are inicialized in the inputfield @ the .html file
         let user = this.login.username;
         let password = this.login.password;
-        console.log(this.UserService);
+        
         this.UserService.login(user,password).then(()=> {
-            this.$state.go('getstarted',{});
+            this.$state.go('home',{});
         });
     }
 
