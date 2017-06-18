@@ -2,6 +2,8 @@
 'use strict';
 
 import template from './app-getstarted.template.html';
+//SB: Importing the Servce for User 
+//import UserService from './../../services/user/user.service';
 import './app-getstarted.style.css';
 
 class AppGetstartedComponent {
@@ -15,9 +17,11 @@ class AppGetstartedComponent {
     }
 }
 
-class AppGetstartedComponentController{
+class AppGetstartedComponentController
+{
     constructor($state){
         this.$state = $state;
+        this.UserService = UserService;
     }
 
     login () {

@@ -5,7 +5,7 @@ import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
 import EntryPageComponent from './../components/entry-page/entry-page';
-import LoginPageComponent from './../components/login-page/login-page';
+import LoginPageComponent from './../components/login-page/login-page.component';
 import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 
@@ -48,4 +48,10 @@ export default function config ($stateProvider, $urlRouterProvider){
               attractions : resolveAttractions
           }
         });
+
+            /*SB: This segment removes the # from the URL
+            $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+        });*/
 }

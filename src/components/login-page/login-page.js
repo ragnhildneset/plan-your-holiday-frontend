@@ -3,8 +3,8 @@
 import angular from 'angular';
 
 import LoginPageComponent from './login-page.component.js';
-import './login-page.style.css';
 
 
+console.log('Entro en login-page');
 export default angular.module('loginPage', [])
     .component(LoginPageComponent.name, new LoginPageComponent);

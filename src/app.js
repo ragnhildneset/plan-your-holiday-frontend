@@ -20,6 +20,7 @@ import EntryPage from './components/entry-page/entry-page';
 import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
+import UserService from './services/users/user';
 
 let app = angular.module('app', [
     uiRouter,
@@ -27,6 +28,7 @@ let app = angular.module('app', [
     angularMaterial,
     AppContent.name,
     ViewAttractions.name,
+    UserService.name,
     AttractionsService.name,
     AppGetstarted.name,
     EntryPage.name,
