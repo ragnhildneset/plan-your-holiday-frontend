@@ -1,15 +1,8 @@
 
 'use strict';
-<<<<<<< HEAD
 
-import template from './app-getstarted.template.html';
-//SB: Importing the Servce for User
-//import UserService from './../../services/user/user.service';
-=======
-//SB: Importing the Servce for User 
 import UserService from './../../services/users/user.service';
 import template from './app-getstarted.template.html';
->>>>>>> 72897b7b04915db37c6c9cf5202ebae0dc5a033d
 import './app-getstarted.style.css';
 
 class AppGetstartedComponent {
@@ -33,7 +26,7 @@ class AppGetstartedComponentController
 
     signup()
     {
-       
+
         //SB: The variables this.login.username are inicialized in the inputfield @ the .html file
         let username = this.signup.username;
         let email = this.signup.email;
@@ -41,7 +34,7 @@ class AppGetstartedComponentController
         let password = this.signup.password;
         let birthdate = this.signup.birthdate;
         let density = this.signup.density;
-        
+
         this.UserService.register(username, email, loginid, password, birthdate, density).then(()=> {
             this.$state.go('home',{});
         });
