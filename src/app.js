@@ -22,6 +22,7 @@ import EntryPage from './components/entry-page/entry-page';
 import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
+import Main from './components/main/main';
 
 
 let app = angular.module('app', [
@@ -36,7 +37,8 @@ let app = angular.module('app', [
     EntryPage.name,
     LoginPage.name,
     Partners.name,
-    AboutPage.name
+    AboutPage.name,
+    Main.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

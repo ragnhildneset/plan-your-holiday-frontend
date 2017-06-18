@@ -26,21 +26,21 @@ class LoginPageComponentController
     constructor($state,UserService)
     {
         this.$state = $state;
-        
+
         this.UserService = UserService;
-        
+
     }
-    
-    $onInit() 
+
+    $onInit()
     {
         this.login = {};
-        
+
     }
 
     //SB: This methode should evaluate the user in the DB
     submit()
     {
-       
+
         //SB: The variables this.login.username are inicialized in the inputfield @ the .html file
         let user = this.login.username;
         let password = this.login.password;
@@ -52,6 +52,10 @@ class LoginPageComponentController
 
     getStarted () {
       this.$state.go('getstarted');
+    };
+
+    main () {
+      this.$state.go('main');
     };
 
     static get $inject(){
