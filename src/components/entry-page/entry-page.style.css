@@ -5,8 +5,8 @@
 .navbar-default
 {
     background-color: rgb(0, 50, 100);
-    border-color: rgb(255, 255, 255);
-    color: rgb(254, 255, 255);
+    border-color: rgb(0, 50, 100);
+    color: rgb(0, 50, 100);
 }
 /* Sets the color once an element of the navbar has been focused or hovered above‚ */
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -39,9 +39,14 @@ background-color: #030033;
     text-align: right;
     display: block;
     margin-top: 60px;
+    width:460px;
+    max-width:460px;
+    display: inline-block;
+    height: 250px;
+    max-height:250px;
 }
 .box-icon {
-    background-color: rgb(0, 0, 255);
+    background-color: #c5cae9;
     border-radius: 50%;
     display: table;
     height: 100px;
@@ -68,6 +73,7 @@ background-color: #030033;
     font-size: 16px;
     padding-top: 10px;
     text-align: justify;
+    text-shadow: none;
 }
 .info > a {
     background-color: #03a9f4;
@@ -88,13 +94,13 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;*/
-  min-height: 100%;
+  min-height: 120%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
 
-  height: 100%;
+  height: 120%;
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);

@@ -4,9 +4,9 @@
 }
 .navbar-default
 {
-    background-color: rgb(0, 50, 100);
-    border-color: rgb(255, 255, 255);
-    color: rgb(254, 255, 255);
+  background-color: rgb(0, 50, 100);
+  border-color: rgb(0, 50, 100);
+  color: rgb(0, 50, 100);
 }
 /* Sets the color once an element of the navbar has been focused or hovered above‚ */
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
