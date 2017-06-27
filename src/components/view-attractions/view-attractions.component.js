@@ -6,7 +6,9 @@ import AttractionsService from './../../services/attractions/attractions.service
 
 
 class ViewAttractionsComponent {
+    
     constructor(){
+      
         this.controller = ViewAttractionsComponentController;
         this.template = template;
         this.bindings = {

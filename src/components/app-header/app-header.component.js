@@ -2,18 +2,17 @@
 'use strict';
 
 import template from './app-header.template.html';
+import './app-header.style.css';
 
 class AppHeaderComponent {
     constructor(){
         this.controller = AppHeaderComponentController;
         this.template = template;
-
     }
 
     static get name() {
         return 'appHeader';
     }
-
 }
 
 class AppHeaderComponentController{
@@ -21,10 +20,25 @@ class AppHeaderComponentController{
         this.$state = $state;
     }
 
+    home () {
+      this.$state.go('home');
+    };
+
+    partners () {
+      this.$state.go('partners');
+    };
+
+    about () {
+      this.$state.go('about');
+    };
+
+    login () {
+      this.$state.go('login');
+    };
+
     static get $inject(){
         return ['$state'];
     }
-
 }
 
 
