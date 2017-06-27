@@ -1,24 +1,3 @@
-.bar {
-  font-size: 20px;
-  color: rgb(200, 200, 200);
-}
-.navbar-default
-{
-    background-color: rgb(0, 50, 100);
-    border-color: rgb(255, 255, 255);
-    color: rgb(254, 255, 255);
-}
-/* Sets the color once an element of the navbar has been focused or hovered above‚ */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-color: rgb(255, 255, 255);  /*Sets the text hover color on navbar*/
-}
-
-/* Sets the color once an element of the navbar has been selected
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >
- a:hover, .navbar-default .navbar-nav > .active > a:focus {
-color: white;
-background-color: #030033;
-}*/
 .jumbotron {
     margin-bottom: 0px;
     background-position: 0% 25%;/

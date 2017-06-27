@@ -1,5 +1,16 @@
+.bar {
+  font-size: 20px;
+  color: rgb(200, 200, 200);
+}
 
+.navbar-default
+{
+   background-color: rgb(0, 50, 100);
+   border-color: rgb(0, 50, 100);
+   color: rgb(0, 50, 100);
+}
 /* Changes cursor once an element of the navbar has been focused or hovered above‚ */
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   cursor: pointer;
+  color: rgb(255, 255, 255);
 }
