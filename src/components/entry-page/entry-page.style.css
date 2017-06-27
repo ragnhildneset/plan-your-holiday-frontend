@@ -1,25 +1,5 @@
-.bar {
-  font-size: 20px;
-  color: rgb(200, 200, 200);
-}
-.navbar-default
-{
-    background-color: rgb(0, 50, 100);
-    border-color: rgb(0, 50, 100);
-    color: rgb(0, 50, 100);
-}
-/* Sets the color once an element of the navbar has been focused or hovered above‚ */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-color: rgb(255, 255, 255);  /*Sets the text hover color on navbar*/
-}
-
-/* Sets the color once an element of the navbar has been selected
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >
- a:hover, .navbar-default .navbar-nav > .active > a:focus {
-color: white;
-background-color: #030033;
-}*/
 .jumbotron {
+  text-align: center;
     margin-bottom: 0px;
     background-position: 0% 25%;/
     background-size: cover;
@@ -39,14 +19,9 @@ background-color: #030033;
     text-align: right;
     display: block;
     margin-top: 60px;
-    width:460px;
-    max-width:460px;
-    display: inline-block;
-    height: 250px;
-    max-height:250px;
 }
 .box-icon {
-    background-color: #c5cae9;
+    background-color: rgb(0, 50, 100);
     border-radius: 50%;
     display: table;
     height: 100px;
@@ -60,10 +35,10 @@ background-color: #030033;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-
-
 }
+
 .info h4 {
+    color: rgb(0, 50, 100);
     font-size: 26px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -73,7 +48,6 @@ background-color: #030033;
     font-size: 16px;
     padding-top: 10px;
     text-align: justify;
-    text-shadow: none;
 }
 .info > a {
     background-color: #03a9f4;
@@ -88,29 +62,14 @@ background-color: #030033;
     color: #fff;
     transition: all 0.5s ease 0s;
 }
-body {
-  background: url("https://www.meditainment.com/images/dmImage/SourceImage/holiday-beach.jpg") no-repeat center center fixed;
-  /*-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
-  min-height: 120%;
+
+.full-background-image {
+  background-image: url("https://www.meditainment.com/images/dmImage/SourceImage/holiday-beach.jpg");
+
+  min-height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-
-  height: 120%;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
-.glyphicon {
-    font-size: 60px;
-    position: inherit;
-    vertical-align: middle;
-    text-align: center;
-    margin-top: 120%;
-    display: inline-block;
 
 }
