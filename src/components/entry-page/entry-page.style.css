@@ -1,13 +1,24 @@
+
+
 .jumbotron {
-  text-align: center;
-    margin-bottom: 0px;
-    background-position: 0% 25%;/
-    background-size: cover;
+
+    background-image: url('https://raw.githubusercontent.com/ragnhildneset/plan-your-holiday-frontend/master/src/img/Prague.jpg');
+    height: 350px;
+    width: 100%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-size: cover;
+    background-position:center fixed;
+    text-align: center;
+    margin-bottom: 0px;
+    background-position: 0% 25%;
     color: white;
     text-shadow: black 0.3em 0.3em 0.3em;
-    background: rgba(100, 100, 100, 0.3);
+}
+
+.jumbotron .container {
+  position:relative;
+  top:50px;
+
 }
 .lead {
     text-shadow: none;
@@ -19,6 +30,12 @@
     text-align: right;
     display: block;
     margin-top: 60px;
+    width:250px;
+    display: inline-block;
+    height: 300px;
+    background-color: #ffffff
+
+
 }
 .box-icon {
     background-color: rgb(0, 50, 100);
@@ -35,6 +52,7 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+
 }
 
 .info h4 {
@@ -64,12 +82,13 @@
 }
 
 .full-background-image {
-  background-image: url("https://www.meditainment.com/images/dmImage/SourceImage/holiday-beach.jpg");
 
-  min-height: 100%;
+
+  height: 160%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  background-color: #bdbdbd;
 
 }
