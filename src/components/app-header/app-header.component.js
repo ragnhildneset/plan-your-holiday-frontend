@@ -39,6 +39,11 @@ class AppHeaderComponentController{
       this.$state.go('login');
     };
 
+    // Development shortcut
+    selectCategories () {
+      this.$state.go('categories');
+    };
+
     isAuthenticated(){
       return this.UserService.isAuthenticated();
     }
