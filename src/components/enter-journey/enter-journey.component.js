@@ -15,14 +15,19 @@ class EnterJourneyComponent {
 }
 
 class EnterJourneyComponentController{
-    constructor($state){
+    constructor($state) {
+        this.journey = {};
         this.$state = $state;
     }
 
-    static get $inject(){
+    static get $inject() {
         return ['$state'];
     }
 
+    submit() {
+        let user = this.UserService.getCurrentUser();
+        this.journey['user'] = user['_id'];
+    };
 }
 
 export default EnterJourneyComponent;
