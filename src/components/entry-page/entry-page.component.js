@@ -4,6 +4,7 @@
 import template from './entry-page.template.html';
 
 
+
 class EntryPageComponent {
     constructor(){
         this.controller = EntryPageComponentController;
@@ -24,9 +25,15 @@ class EntryPageComponentController{
       this.$state.go('getstarted');
     };
 
+    login () {
+      this.$state.go('main');
+    };
+
     static get $inject(){
         return ['$state'];
     }
+
+
 
 
 }

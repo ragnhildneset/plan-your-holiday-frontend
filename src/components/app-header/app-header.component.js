@@ -1,6 +1,8 @@
 
 'use strict';
 
+import UserService from './../../services/users/user.service';
+
 import template from './app-header.template.html';
 import './app-header.style.css';
 
@@ -16,8 +18,9 @@ class AppHeaderComponent {
 }
 
 class AppHeaderComponentController{
-    constructor($state){
+    constructor($state, UserService){
         this.$state = $state;
+        this.UserService = UserService;
     }
 
     home () {
@@ -36,8 +39,22 @@ class AppHeaderComponentController{
       this.$state.go('login');
     };
 
+    // Development shortcut
+    selectCategories () {
+      this.$state.go('categories');
+    };
+
+    isAuthenticated(){
+      return this.UserService.isAuthenticated();
+    }
+
+    getCurrentUser(){
+      let user = this.UserService.getCurrentUser();
+      return user.username;
+    }
+
     static get $inject(){
-        return ['$state'];
+        return ['$state', UserService.name];
     }
 }
 

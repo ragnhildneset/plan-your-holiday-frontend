@@ -9,6 +9,7 @@ import LoginPageComponent from './../components/login-page/login-page.component'
 import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import MainComponent from './../components/main/main';
+import CategorySelectionComponent from './../components/category-selection/category-selection';
 
 import AttractionsService from './../services/attractions/attractions.service'
 
@@ -51,6 +52,10 @@ export default function config ($stateProvider, $urlRouterProvider){
         .state('main', {
             url: '/main',
             component: MainComponent.name
+        })
+        .state('categories', {
+            url: '/categories',
+            component: CategorySelectionComponent.name
         })
         .state('attractions', {
             url: '/attractions',

@@ -26,6 +26,7 @@ import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
 import Main from './components/main/main';
+import CategorySelection from './components/category-selection/category-selection';
 
 
 let app = angular.module('app', [
@@ -44,7 +45,8 @@ let app = angular.module('app', [
     LoginPage.name,
     Partners.name,
     AboutPage.name,
-    Main.name
+    Main.name,
+    CategorySelection.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

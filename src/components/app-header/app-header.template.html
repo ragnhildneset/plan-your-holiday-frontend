@@ -1,10 +1,11 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
    <ul class="nav navbar-nav navbar-right">
-      <li><a ng-click="$ctrl.home()">Home</a></li>
+      <li><a ng-click="$ctrl.selectCategories()">DEV Categories</a></li>
       <li><a ng-click="$ctrl.partners()">Partners</a></li>
       <li><a ng-click="$ctrl.about()">About</a></li>
-      <li><a ng-click="$ctrl.login()">Login</a></li>
+      <li ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.home()"><a> Login </a></li>
+      <li ng-if="$ctrl.isAuthenticated()"><a>{{$ctrl.getCurrentUser()}}</a></li>
     </ul>
  </div>
 </nav>

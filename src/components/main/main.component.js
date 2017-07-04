@@ -20,6 +20,10 @@ class MainComponentController{
         this.$state = $state;
     }
 
+    selectCategories () {
+      this.$state.go('categories');
+    };
+
     static get $inject(){
         return ['$state'];
     }
