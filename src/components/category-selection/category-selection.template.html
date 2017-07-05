@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
@@ -12,165 +11,159 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="full-background-image">
 
-      <header class="jumbotron">
-         <div class="inner cover">
-            <h1 class="cover-heading">What would you like to visit!</h1>
-            <p>Select your Category Preferences for the upcoming trips</p>
-         </div>
-      </header>
+  <div class="full-background-image">
 
-       <body style="margin: 0; border: 0;">
+    <header class="jumbotron">
+      <div class="inner cover">
+        <h1 class="cover-heading">What would you like to visit!</h1>
+        <p>Select your Category Preferences for the upcoming trips</p>
+      </div>
+    </header>
 
-         <table style="border: 0; width: 100%;">
-         <tr> <td colspan="2">
-           <div class="container">
-             <div class="row">
-               <div class="col-md-3">
-                 <div class="box3">
-                   <div class="info">
-                     <h4 class="text-center">Monuments</h4>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                               <!-- <a href="" class="btn">Link</a> -->
-                   </div>
+    <body style="margin: 0; border: 0;">
+
+    <table style="border: 0; width: 100%;">
+       <tr> <td colspan="2">
+         <div class="container">
+           <div class="row">
+             <div class="col-md-3">
+               <div class="box3">
+                 <div class="info">
+                   <h4 class="text-center">Monuments</h4>
+                   <br> <br> <br> <br> <br> <br> <br>
+                   <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                  </div>
                </div>
-               <div class="col-md-3">
-                 <div class="box4">
-                   <div class="info">
-                     <h4 class="text-center">Museums</h4>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-
-                        <!-- <a href="" class="btn">Link</a> -->
-                   </div>
+             </div>
+             <div class="col-md-3">
+               <div class="box4">
+                 <div class="info">
+                   <h4 class="text-center">Museums</h4>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                  </div>
                </div>
-               <div class="col-md-3">
-                 <div class="box5">
-                   <div class="info">
-                     <h4 class="text-center">Parks</h4>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                     <!-- <a href="" class="btn">Link</a> -->
-                   </div>
+             </div>
+             <div class="col-md-3">
+               <div class="box5">
+                 <div class="info">
+                   <h4 class="text-center">Parks</h4>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                  </div>
                </div>
-               <div class="col-md-3">
-                 <div class="box6">
-                   <div class="info">
-                     <h4 class="text-center">Churches</h4>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                   </div>
+             </div>
+             <div class="col-md-3">
+               <div class="box6">
+                 <div class="info">
+                   <h4 class="text-center">Churches</h4>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                  </div>
                </div>
              </div>
            </div>
+         </div>
+       </td>
+       </tr>
+       <tr>
+         <td style="width: 25%">
+           Navigation
+           <canvas id="myPieChart" width="400" height="400"></canvas>
          </td>
-         </tr>
-         <tr>
-           <td style="width: 25%">
-             Navigation
-             <canvas id="myPieChart" width="400" height="400"></canvas>
-           </td>
 
-           <td style="width: 75%; background: #FFA100;"> <div class="container" center>
+         <td style="width: 75%; background: #FFA100;"> <div class="container" center>
 
 
-          </td>
-         </tr>
-        </table>
+        </td>
+       </tr>
+      </table>
 
-      <!-- exemplary listing of the information from the backend
-        <a href="#" class="list-group-item" ng-repeat="attraction in $ctrl.attractions">
-            <p> {{attraction.title}} {{attraction.city}} </p>
-        </a>
-      -->
 
+      <div class="container">
+        <div class="row">
+          <div class = "container">
+            <div class = "column">
+              <div ng-repeat="attraction in $ctrl.attractions">
+                <div class="col-md-3">
+                  <div class="box3">
+                    <p> {{attraction.title}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div>
 
     </body>  <!-- hier ist das Ende des Elements Wrapper -->
 
 
-    </div>
+  </div>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
-    <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
-    <script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
+  <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+  <script>
     $('#ex1').slider({
-	formatter: function(value) {
-		return 'Current value: ' + value;
-	}
-  });
-  $('#ex2').slider({
-formatter: function(value) {
-  return 'Current value: ' + value;
-}
-});
-$('#ex3').slider({
-formatter: function(value) {
-return 'Current value: ' + value;
-}
-});
-$('#ex4').slider({
-formatter: function(value) {
-return 'Current value: ' + value;
-}
-});
-
-    </script>
-    <script src="bower_components/chart.js/dist/Chart.js"></script>
-    <script>
+  	   formatter: function(value) {
+  		     return 'Current value: ' + value;
+  	      }
+        });
+    $('#ex2').slider({
+      formatter: function(value) {
+        return 'Current value: ' + value;
+      }
+    });
+    $('#ex3').slider({
+      formatter: function(value) {
+        return 'Current value: ' + value;
+      }
+    });
+    $('#ex4').slider({
+      formatter: function(value) {
+        return 'Current value: ' + value;
+      }
+    });
+  </script>
+  <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script>
     var ctx = document.getElementById("myPieChart");
     var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            datasets: [{
-
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgba(255, 99, 132)',
-                    'rgba(54, 162, 235)',
-                    'rgba(255, 206, 86)',
-                ]
-
-            }]
-        }
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: [300, 50, 100],
+          backgroundColor: [
+            'rgba(255, 99, 132)',
+            'rgba(54, 162, 235)',
+            'rgba(255, 206, 86)',
+          ]
+        }]
+      }
     });
+  </script>
 
-
-</script>
-
-  </body>
 </html>

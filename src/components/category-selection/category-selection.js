@@ -8,5 +8,3 @@ import './category-selection.style.css';
 
 export default angular.module('categorySelection', [])
     .component(CategorySelectionComponent.name, new CategorySelectionComponent);
-
-    
