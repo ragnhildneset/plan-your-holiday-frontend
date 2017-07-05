@@ -105,8 +105,9 @@
             <div class = "column">
               <div ng-repeat="attraction in $ctrl.attractions">
                 <div class="col-md-3">
-                  <div class="box3">
-                    <p> {{attraction.title}} </p>
+                  <div class="thumbbox">
+                    <p class="text-center"> {{attraction.title}} </p>
+                    <input type="checkbox" ng-click='$ctrl.click(attraction._id)' value="">
                   </div>
                 </div>
               </div>
@@ -148,7 +149,7 @@
       }
     });
   </script>
-  <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <!--<script src="bower_components/chart.js/dist/Chart.js"></script>
   <script>
     var ctx = document.getElementById("myPieChart");
     var myChart = new Chart(ctx, {
@@ -164,6 +165,6 @@
         }]
       }
     });
-  </script>
+  </script> -->
 
 </html>
