@@ -57,3 +57,10 @@
     letter-spacing: 2px;
     text-transform: uppercase;
 }
+#ex1Slider .slider-selection {
+	background: #BABABA;
+
+}
+#ex1Slider .slider-handle {
+	background: blue;
+}

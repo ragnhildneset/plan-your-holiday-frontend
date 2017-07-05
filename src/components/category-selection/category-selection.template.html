@@ -32,6 +32,14 @@
                  <div class="box3">
                    <div class="info">
                      <h4 class="text-center">Monuments</h4>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                                <!-- <a href="" class="btn">Link</a> -->
                    </div>
                  </div>
@@ -40,6 +48,15 @@
                  <div class="box4">
                    <div class="info">
                      <h4 class="text-center">Museums</h4>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+
                         <!-- <a href="" class="btn">Link</a> -->
                    </div>
                  </div>
@@ -48,8 +65,15 @@
                  <div class="box5">
                    <div class="info">
                      <h4 class="text-center">Parks</h4>
-                     <input id="ex7" type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="5" data-slider-enabled="false"/>
-                     <input id="ex7-enabled" type="checkbox"/> Enabled
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                     <!-- <a href="" class="btn">Link</a> -->
                    </div>
                  </div>
                </div>
@@ -57,6 +81,14 @@
                  <div class="box6">
                    <div class="info">
                      <h4 class="text-center">Churches</h4>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                    </div>
                  </div>
                </div>
@@ -65,8 +97,9 @@
          </td>
          </tr>
          <tr>
-           <td style="width: 25%; background: #658C00;">
+           <td style="width: 25%">
              Navigation
+             <canvas id="myPieChart" width="400" height="400"></canvas>
            </td>
 
            <td style="width: 75%; background: #FFA100;"> <div class="container" center>
@@ -95,7 +128,49 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
     <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
     <script>
-    $("#ex7").slider();
+    $('#ex1').slider({
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
+  });
+  $('#ex2').slider({
+formatter: function(value) {
+  return 'Current value: ' + value;
+}
+});
+$('#ex3').slider({
+formatter: function(value) {
+return 'Current value: ' + value;
+}
+});
+$('#ex4').slider({
+formatter: function(value) {
+return 'Current value: ' + value;
+}
+});
+
     </script>
+    <script src="bower_components/chart.js/dist/Chart.js"></script>
+    <script>
+    var ctx = document.getElementById("myPieChart");
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            datasets: [{
+
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)',
+                ]
+
+            }]
+        }
+    });
+
+
+</script>
+
   </body>
 </html>
