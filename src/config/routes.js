@@ -53,14 +53,17 @@ export default function config ($stateProvider, $urlRouterProvider){
         })
         .state('categories', {
             url: '/categories',
-            component: CategorySelectionComponent.name
+            component: CategorySelectionComponent.name,
+            resolve: {
+              attractions : resolveAttractions
+            }
         })
         .state('attractions', {
             url: '/attractions',
             component: AttractionsComponent.name,
             resolve: {
               attractions : resolveAttractions
-          }
+            }
         });
 
             /*SB: This segment removes the # from the URL
