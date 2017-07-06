@@ -14,7 +14,7 @@ import CategorySelectionComponent from './../components/category-selection/categ
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
-    return attractionsService.list();
+    return attractionsService.best();
 }
 
 

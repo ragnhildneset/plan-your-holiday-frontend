@@ -20,105 +20,114 @@
         <p>Select your Category Preferences for the upcoming trips</p>
       </div>
     </header>
-
-    <body style="margin: 0; border: 0;">
-
-    <table style="border: 0; width: 100%;">
-       <tr> <td colspan="2">
-         <div class="container">
-           <div class="row">
-             <div class="col-md-3">
-               <div class="box3">
-                 <div class="info">
-                   <h4 class="text-center">Monuments</h4>
-                   <br> <br> <br> <br> <br> <br> <br>
-                   <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                 </div>
-               </div>
-             </div>
-             <div class="col-md-3">
-               <div class="box4">
-                 <div class="info">
-                   <h4 class="text-center">Museums</h4>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                 </div>
-               </div>
-             </div>
-             <div class="col-md-3">
-               <div class="box5">
-                 <div class="info">
-                   <h4 class="text-center">Parks</h4>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                 </div>
-               </div>
-             </div>
-             <div class="col-md-3">
-               <div class="box6">
-                 <div class="info">
-                   <h4 class="text-center">Churches</h4>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </td>
-       </tr>
-       <tr>
-         <td style="width: 25%">
-           Navigation
-           <canvas id="myPieChart" width="400" height="400"></canvas>
-         </td>
-
-         <td style="width: 75%; background: #FFA100;"> <div class="container" center>
-
-
-        </td>
-       </tr>
-      </table>
-
-
-      <div class="container">
-        <div class="row">
-          <div class = "container">
-            <div class = "column">
-              <div ng-repeat="attraction in $ctrl.attractions">
-                <div class="col-md-3">
-                  <div class="thumbbox">
-                    <p class="text-center"> {{attraction.title}} </p>
-                    <input type="checkbox" ng-click='$ctrl.click(attraction._id)' value="">
+    <div class= "panel panel-default">
+      <div class="panel-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="box3">
+                  <div class="info">
+                    <h4 class="text-center">Monuments</h4>
+                    <br> <br> <br> <br> <br> <br> <br>
+                    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box4">
+                  <div class="info">
+                    <h4 class="text-center">Museums</h4>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box5">
+                  <div class="info">
+                    <h4 class="text-center">Parks</h4>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box6">
+                  <div class="info">
+                    <h4 class="text-center">Churches</h4>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <div>
 
-    </body>  <!-- hier ist das Ende des Elements Wrapper -->
+      </div>
+
+         <div class="container">
+           <div class="row">
+             <div class="col-md-5">
+         <br>
+         <br>
+         <canvas id="myPieChart" width="400" height="400"></canvas>
+       </div>
+
+       <div class="col-6">
+         <div class="container">
+           <div class="row">
+             <div class = "container">
+               <div class = "column">
+                 <div ng-repeat="attraction in $ctrl.attractions">
+                   <div class="col-md-3">
+                     <div class="thumbbox">
+                       <p class="text-center"> {{attraction.title}} </p>
+                       <input type="checkbox" ng-click='$ctrl.click(attraction._id)' value="">
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         <div>
+       </div>
+
+     </div>
 
 
+
+
+
+
+
+
+
+
+
+  </div>
+  </div>
   </div>
 
 
@@ -158,9 +167,9 @@
         datasets: [{
           data: [300, 50, 100],
           backgroundColor: [
-            'rgba(255, 99, 132)',
-            'rgba(54, 162, 235)',
-            'rgba(255, 206, 86)',
+            'rgb(255, 0, 0)',
+            'rgb(9, 99, 249)',
+            'rgb(253, 254, 42)',
           ]
         }]
       }
