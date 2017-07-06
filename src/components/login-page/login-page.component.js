@@ -46,7 +46,7 @@ class LoginPageComponentController
         let password = this.login.password;
 
         this.UserService.login(user,password).then(()=> {
-            this.$state.go('home',{});
+            this.$state.go('enter-journey',{});
         });
     }
 
@@ -54,8 +54,8 @@ class LoginPageComponentController
       this.$state.go('getstarted');
     };
 
-    main () {
-      this.$state.go('main');
+    enterJourney () {
+      this.$state.go('enter-journey');
     };
 
     static get $inject(){
