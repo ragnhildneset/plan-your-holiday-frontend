@@ -2,6 +2,7 @@
 'use strict';
 
 import template from './enter-journey.template.html';
+import UserService from './../../services/users/user.service';
 
 class EnterJourneyComponent {
     constructor(){
@@ -15,18 +16,21 @@ class EnterJourneyComponent {
 }
 
 class EnterJourneyComponentController{
-    constructor($state) {
+    constructor($state, $window, UserService)
+    {
+        this.UserService = UserService;
         this.journey = {};
         this.$state = $state;
+        this.$window = $window;
     }
 
     static get $inject() {
-        return ['$state'];
+        return ['$state', '$window', UserService.name];
     }
 
     submit() {
-        let user = this.UserService.getCurrentUser();
-        this.journey['user'] = user['_id'];
+        this.$window.localStorage['journey'] = JSON.stringify(this.journey);
+        this.$state.go('categories');
     };
 }
 
