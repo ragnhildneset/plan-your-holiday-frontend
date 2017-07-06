@@ -37,7 +37,7 @@ class AppGetstartedComponentController
         let currency = this.signup.currency;
 
         this.UserService.register(username, email, loginid, password, birthdate, density).then(()=> {
-            this.$state.go('main',{});
+            this.$state.go('enter-journey',{});
         });
     }
 
@@ -45,8 +45,8 @@ class AppGetstartedComponentController
       this.$state.go('login');
     };
 
-    main () {
-      this.$state.go('main');
+    enterJourney () {
+      this.$state.go('enter-journey');
     };
 
     static get $inject(){

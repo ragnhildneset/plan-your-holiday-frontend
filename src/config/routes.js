@@ -1,16 +1,17 @@
 'use strict';
 
 import AttractionsComponent from '../components/view-attractions/view-attractions';
+import EnterJourneyComponent from '../components/enter-journey/enter-journey'
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
-import AttractionsService from './../services/attractions/attractions.service';
-
 import EntryPageComponent from './../components/entry-page/entry-page';
 import LoginPageComponent from './../components/login-page/login-page.component';
 import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
-import MainComponent from './../components/main/main';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
+
+import AttractionsService from './../services/attractions/attractions.service'
+
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
@@ -47,10 +48,6 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/about',
             component: AboutPageComponent.name
         })
-        .state('main', {
-            url: '/main',
-            component: MainComponent.name
-        })
         .state('categories', {
             url: '/categories',
             component: CategorySelectionComponent.name
@@ -59,8 +56,12 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/attractions',
             component: AttractionsComponent.name,
             resolve: {
-              attractions : resolveAttractions
-          }
+                attractions : resolveAttractions
+            }
+        })
+        .state('enter-journey', {
+            url: '/enter-journey',
+            component: EnterJourneyComponent.name
         });
 
             /*SB: This segment removes the # from the URL
