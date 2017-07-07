@@ -17,9 +17,6 @@ function resolveAttractions(attractionsService){
     return attractionsService.best();
 }
 
-
-
-
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config ($stateProvider, $urlRouterProvider){
 
