@@ -74,21 +74,19 @@ class CategorySelectionComponentController {
       console.log(' ' + this.attractionWeight[2] + ' Parks');
       console.log(' ' + this.attractionWeight[3] + ' Churches');
 
-      /*var p1 = this.AttractionsService.getTop(this.attractionWeight[0], 'Monuments').then(function(monuments) {
-          return monuments;
-      });
-      var p2 = this.AttractionsService.getTop(this.attractionWeight[1], 'Museums').then(function(museums) {
-          return museums;
-      });
+      var data = '';
 
-      Promise.all([p1, p2]).then(function(values) {
-        console.log('received values');
-        for(var i = 0; i < values.length; i++) {
-          for(var j = 0; j < values[i].length; i++) {
-            console.log(' (' + (i+1) + '-' + (j+1) + ') ' + values[i][j].title);
-          }
-        }
-      });*/
+      console.log("Attractions:");
+      for(var i = 0; i < this.attractions.length; i++)
+      {
+        console.log(' (' + (i+1) + ') ' + this.attractions[i].title);
+      }
+
+      this.AttractionsService.getTop(this.attractionWeight[0], 'Monuments').then(this.calculateWith(data));
+    }
+
+    calculateWith(data) {
+      console.log(data);
     }
 
     static get $inject(){

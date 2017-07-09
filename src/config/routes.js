@@ -14,7 +14,7 @@ import CategorySelectionComponent from './../components/category-selection/categ
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
-    return attractionsService.best();
+    return attractionsService.allBest();
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];

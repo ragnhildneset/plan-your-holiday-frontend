@@ -82,7 +82,7 @@
            <div class="row">
              <div class = "container">
                <div class = "column">
-                 <div ng-repeat="attraction in $ctrl.attractions">
+                 <div ng-repeat="attraction in $ctrl.attractions | limitTo:10">
                    <div class="col-md-3">
                      <div class="thumbbox">
                        <p class="text-center"> {{attraction.title}} </p>

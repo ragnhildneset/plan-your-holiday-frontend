@@ -34,6 +34,15 @@ export default class AttractionsService {
         });
     }
 
+    allBest() {
+        let url = this.resourceUrl + 'top/';
+        return this.$http.get(url).then(responce => {
+            return new Promise((resolve, reject) => {
+                resolve(responce.data);
+            });
+        });
+    }
+
     getTop(limit, category) {
         let url = this.resourceUrl + 'top/' + limit + '/' + category;
         return this.$http.get(url).then(responce => {
