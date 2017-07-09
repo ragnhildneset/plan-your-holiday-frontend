@@ -32,7 +32,7 @@
                   <div class="info">
                     <h4 class="text-center">Monuments</h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Monuments" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -41,7 +41,7 @@
                   <div class="info">
                     <h4 class="text-center">Museums</h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Museums" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@
                   <div class="info">
                     <h4 class="text-center">Parks</h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Parks" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value=""/>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                   <div class="info">
                     <h4 class="text-center">Churches</h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Churches" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -112,43 +112,54 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
   <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
   <script>
-    $('#ex1').slider({
+    $('#Monuments').slider({
   	   formatter: function(value) {
   		     return 'Current value: ' + value;
   	      }
         });
-    $('#ex2').slider({
+    $('#Museums').slider({
       formatter: function(value) {
         return 'Current value: ' + value;
       }
     });
-    $('#ex3').slider({
+    $('#Parks').slider({
       formatter: function(value) {
         return 'Current value: ' + value;
       }
     });
-    $('#ex4').slider({
+    $('#Churches').slider({
       formatter: function(value) {
         return 'Current value: ' + value;
       }
     });
+
+
+
+
   </script>
-  <!-- <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script src="bower_components/chart.js/dist/Chart.js"></script>
   <script>
+
+  var dData = function() {
+    return 10
+};
+
+
     var ctx = document.getElementById("myPieChart");
     var myChart = new Chart(ctx, {
       type: 'pie',
       data: {
         datasets: [{
-          data: [300, 50, 100],
+          data: [ dData(),dData(),dData(),dData()],
           backgroundColor: [
             'rgb(255, 0, 0)',
             'rgb(9, 99, 249)',
             'rgb(253, 254, 42)',
+            'rgb(22, 185, 10)',
           ]
         }]
       }
     });
-  </script> -->
+  </script>
 
 </html>
