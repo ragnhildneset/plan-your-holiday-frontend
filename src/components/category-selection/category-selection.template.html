@@ -71,10 +71,12 @@
 
          <div class="container">
            <div class="row">
-             <div class="col-md-5">
-         <br>
-         <br>
-         <canvas id="myPieChart" width="400" height="400"></canvas>
+             <div class="col-md-6">
+         <div class="box7" widht="550" height= "550" position="right" >
+           <h4 class="text-center">This shows your density of the Categories!</h4>
+         <canvas id="myPieChart" width="500" height="500" ></canvas>
+
+       </div>
        </div>
 
        <div class="col-6">
@@ -139,7 +141,9 @@
     var ctx = document.getElementById("myPieChart");
     var myChart = new Chart(ctx, {
       type: 'pie',
+
       data: {
+        labels: ["Monuments", "Museums", "Parks", "Churches"],
         datasets: [{
           data: [10,10,10,10],
           backgroundColor: [
@@ -149,7 +153,12 @@
             'rgb(22, 185, 10)',
           ]
         }]
-      }
+      },
+      options: {
+      legend: {
+      display: true,
+      position: 'bottom',
+    }}
     });
 
     $('#Monuments').on('change', function(){
