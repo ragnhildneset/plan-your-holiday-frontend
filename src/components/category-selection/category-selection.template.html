@@ -132,25 +132,16 @@
         return 'Current value: ' + value;
       }
     });
-
-
-
-
   </script>
-  <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script src="node_modules/chart.js/dist/Chart.js"></script>
   <script>
-
-  var dData = function() {
-    return 10
-};
-
 
     var ctx = document.getElementById("myPieChart");
     var myChart = new Chart(ctx, {
       type: 'pie',
       data: {
         datasets: [{
-          data: [ dData(),dData(),dData(),dData()],
+          data: [10,10,10,10],
           backgroundColor: [
             'rgb(255, 0, 0)',
             'rgb(9, 99, 249)',
@@ -160,6 +151,28 @@
         }]
       }
     });
-  </script>
 
+    $('#Monuments').on('change', function(){
+      updatePiechart();
+    });
+
+    $('#Museums').on('change', function(){
+      updatePiechart();
+    });
+
+    $('#Parks').on('change', function(){
+      updatePiechart();
+    });
+
+    $('#Churches').on('change', function(){
+      updatePiechart();
+    });
+
+
+    function updatePiechart() {
+      new_data = [   $('#Monuments').val(),   $('#Museums').val(),   $('#Parks').val(),   $('#Churches').val()];
+      myChart.config.data.datasets[0].data = new_data;
+      myChart.update();
+    }
+  </script>
 </html>
