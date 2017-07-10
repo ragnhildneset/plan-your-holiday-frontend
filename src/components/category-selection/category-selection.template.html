@@ -12,7 +12,7 @@
     <![endif]-->
   </head>
 
-  <div class="full-background-image">
+  <div class="full-background-image1">
 
     <header class="jumbotron">
       <div class="inner cover">
@@ -20,46 +20,48 @@
         <p>Select your Category Preferences for the upcoming trips</p>
       </div>
     </header>
+
     <div class= "panel panel-default">
-      <div class="panel-body">
+    <div class="panel-body">
     <div class="container">
       <div class="row">
         <div class="col">
           <div class="container">
+            <h4 class="text-center"><strong>Choose your category density with the slider!</strong></h4>
             <div class="row">
               <div class="col-md-3">
                 <div class="box3">
                   <div class="info">
-                    <h4 class="text-center">Monuments</h4>
+                    <h4 class="text-center"><strong>Monuments</strong></h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Monuments" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="box4">
                   <div class="info">
-                    <h4 class="text-center">Museums</h4>
+                    <h4 class="text-center"><strong>Museums</strong></h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Museums" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="box5">
                   <div class="info">
-                    <h4 class="text-center">Parks</h4>
+                    <h4 class="text-center"><strong>Parks</strong></h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Parks" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value=""/>
                   </div>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="box6">
                   <div class="info">
-                    <h4 class="text-center">Churches</h4>
+                    <h4 class="text-center"><strong>Churches</strong></h4>
                     <br> <br> <br> <br> <br> <br> <br>
-                    <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                    <input id="Churches" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -71,10 +73,12 @@
 
          <div class="container">
            <div class="row">
-             <div class="col-md-5">
-         <br>
-         <br>
-         <canvas id="myPieChart" width="400" height="400"></canvas>
+             <div class="col-md-6">
+         <div class="box7" widht="550" height= "550" position="right" >
+           <h4 class="text-center">This shows your density of the Categories!</h4>
+         <canvas id="myPieChart" width="500" height="500" ></canvas>
+
+       </div>
        </div>
 
        <div class="col-6">
@@ -84,8 +88,8 @@
                <div class = "column">
                  <div ng-repeat="attraction in $ctrl.attractions | limitTo:10">
                    <div class="col-md-3">
-                     <div class="thumbbox">
-                       <p class="text-center"> {{attraction.title}} </p>
+                     <div class="thumbbox" style="background-image: url({{attraction.filename}}); background-size: cover; background-repeat: no-repeat; background-position: center">
+                       <p class="text-center" style="font-size:20px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"><strong> {{attraction.title}} <strong></p>
                        <input type="checkbox" ng-click='$ctrl.click(attraction._id)' value="">
                      </div>
                    </div>
@@ -97,7 +101,7 @@
        </div>
 
      </div>
-
+     <br> <br>
      <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="$ctrl.calculate()"> <h2> Receive the best Schedule</h2> </button>
 
 
@@ -112,43 +116,74 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
   <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
   <script>
-    $('#ex1').slider({
+    $('#Monuments').slider({
   	   formatter: function(value) {
   		     return 'Current value: ' + value;
   	      }
         });
-    $('#ex2').slider({
+    $('#Museums').slider({
       formatter: function(value) {
         return 'Current value: ' + value;
       }
     });
-    $('#ex3').slider({
+    $('#Parks').slider({
       formatter: function(value) {
         return 'Current value: ' + value;
       }
     });
-    $('#ex4').slider({
+    $('#Churches').slider({
       formatter: function(value) {
         return 'Current value: ' + value;
       }
     });
   </script>
-  <!-- <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script src="node_modules/chart.js/dist/Chart.js"></script>
   <script>
+
     var ctx = document.getElementById("myPieChart");
     var myChart = new Chart(ctx, {
       type: 'pie',
+
       data: {
+        labels: ["Monuments", "Museums", "Parks", "Churches"],
         datasets: [{
-          data: [300, 50, 100],
+          data: [10,10,10,10],
           backgroundColor: [
             'rgb(255, 0, 0)',
             'rgb(9, 99, 249)',
             'rgb(253, 254, 42)',
+            'rgb(22, 185, 10)',
           ]
         }]
-      }
+      },
+      options: {
+      legend: {
+      display: true,
+      position: 'bottom',
+    }}
     });
-  </script> -->
 
+    $('#Monuments').on('change', function(){
+      updatePiechart();
+    });
+
+    $('#Museums').on('change', function(){
+      updatePiechart();
+    });
+
+    $('#Parks').on('change', function(){
+      updatePiechart();
+    });
+
+    $('#Churches').on('change', function(){
+      updatePiechart();
+    });
+
+
+    function updatePiechart() {
+      new_data = [   $('#Monuments').val(),   $('#Museums').val(),   $('#Parks').val(),   $('#Churches').val()];
+      myChart.config.data.datasets[0].data = new_data;
+      myChart.update();
+    }
+  </script>
 </html>
