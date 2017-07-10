@@ -7,12 +7,12 @@ export default class UserService {
         return ['$http', '$window','API_URL'];
     }
 
-    constructor($http,$window,API_URL) 
-    {   
+    constructor($http,$window,API_URL)
+    {
         this.$http = $http;
         this.$window = $window;
         this.API_URL = API_URL;
-        
+
 
     }
 
@@ -21,8 +21,8 @@ export default class UserService {
     }
 
     register(username, email, loginid, password, birthdate, density) {
-        
-             
+
+
         return this.$http.post(`${ this.API_URL }/user/signup`, {
         username : username,
         loginid : loginid,
@@ -34,7 +34,6 @@ export default class UserService {
     }
 
     login(user, pass) {
-        console.log('Login en User Service');
         return this.$http.post(`${ this.API_URL }/user/login`, {
             username: user,
             password: pass

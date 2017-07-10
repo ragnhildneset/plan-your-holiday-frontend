@@ -8,6 +8,8 @@ import 'angular-material/angular-material.css';
 
 import bootstrap from 'angular-ui-bootstrap';
 import ngMdIcons from 'angular-material-icons';
+import animate from 'angular-animate';
+import datetimepicker from 'angular-bootstrap-datetimepicker';
 
 import UserService from './services/users/user';
 
@@ -16,6 +18,7 @@ import Middlewares from './config/middlewares';
 
 import AppContent from './components/app-content/app-content';
 import ViewAttractions from './components/view-attractions/view-attractions';
+import EnterJourney from './components/enter-journey/enter-journey';
 import AttractionsService from './services/attractions/attractions';
 import ViewTravel from './components/view-travel/view-travel';
 import TravelService from './services/travel/travel';
@@ -24,7 +27,6 @@ import EntryPage from './components/entry-page/entry-page';
 import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
-import Main from './components/main/main';
 import CategorySelection from './components/category-selection/category-selection';
 
 
@@ -32,7 +34,10 @@ let app = angular.module('app', [
     uiRouter,
     bootstrap,
     angularMaterial,
+    animate,
+    datetimepicker,
     AppContent.name,
+    EnterJourney.name,
     ViewAttractions.name,
     ViewTravel.name,
     UserService.name,
@@ -43,7 +48,6 @@ let app = angular.module('app', [
     LoginPage.name,
     Partners.name,
     AboutPage.name,
-    Main.name,
     CategorySelection.name
 ]);
 
