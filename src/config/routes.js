@@ -11,6 +11,7 @@ import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
 
 import AttractionsService from './../services/attractions/attractions.service'
+import CityService from './../services/cities/city.service'
 
 
 resolveAttractions.$inject = [AttractionsService.name];
@@ -18,8 +19,10 @@ function resolveAttractions(attractionsService){
     return attractionsService.list();
 }
 
-
-
+resolveCities.$inject = [CityService.name];
+function resolveCities(cityService){
+    return cityService.list();
+}
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config ($stateProvider, $urlRouterProvider){
@@ -61,7 +64,10 @@ export default function config ($stateProvider, $urlRouterProvider){
         })
         .state('enter-journey', {
             url: '/enter-journey',
-            component: EnterJourneyComponent.name
+            component: EnterJourneyComponent.name,
+            resolve: {
+                cities : resolveCities
+            }
         });
 
             /*SB: This segment removes the # from the URL
