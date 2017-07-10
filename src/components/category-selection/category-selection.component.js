@@ -51,8 +51,6 @@ class CategorySelectionComponentController {
     }
 
     calculate() {
-      console.log('start calculating schedule');
-
       // Set up required data
       // TODO replace hardcoded value with value from the user
       this.density = 3;
@@ -65,8 +63,6 @@ class CategorySelectionComponentController {
         Math.round(this.density * this.duration * 0.4), // Parks
         Math.round(this.density * this.duration * 0.1)  // Churches
       ];
-
-      // this.printWeights();
 
       // Within these arrays all the relevant attractions for the schedule are stored
       this.monuments = [];
@@ -88,11 +84,11 @@ class CategorySelectionComponentController {
           }
         }
       }
-      // this.printSelectedMustSees();
+      // the pool is a copy of the attractions with the already selected must-sees removed
       this.pool = this.attractions.slice(0);
-
       this.removeAlreadySelected();
 
+      // adding the best attractions of each category to the fields until they required amount is reached
       while(this.monuments.length < this.attractionWeight[0]) {
         this.monuments.push(this.pool[this.getBestOfCategory("Monuments")]);
         this.pool.splice(this.getBestOfCategory("Monuments"), 1);
@@ -114,25 +110,26 @@ class CategorySelectionComponentController {
       this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
 
       // create a travel-object
-      var arrival = new Date("August 17, 2017");
-      var departure = new Date("August 21, 2017");
+      var arrival = new Date("August 17, 2017, 10:00");
+      var departure = new Date("August 21, 2017, 23:00");
 
-      /*var schedule = [];
+      var schedule = [];
       var current = 0;
+      // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
         for(var j = 0; j < this.density; j++) {
           var start = 0;
           if(j == 0) {
             start = new Date(arrival);
-            start.setDays(arrival + parseInt(i));
-            start.setHours(10);
+            start.setDate(arrival.getDate() + parseInt(i));
           }
           else {
-            start = new Date(schedule[i*this.density + j - 1].start);
+            start = new Date(schedule[i*this.density + j - 1].end);
             start.setHours(start.getHours() + 1);
           }
           var end = new Date(start);
-          end.setHours(end.getHours + this.selection[current].duration);
+
+          end.setMinutes(end.getMinutes() + this.selection[current].duration);
           var activity = {'attractionID': this.selection[current]._id,
               'start': start,
               'end': end};
@@ -149,7 +146,10 @@ class CategorySelectionComponentController {
           'schedule': schedule
         };
 
-      console.log(travel);*/
+        //console.log(travel);
+
+      // TODO post the created travel-object to the server
+      // TODO open the schedule viewer with the created schedule
     }
 
     removeAlreadySelected() {
