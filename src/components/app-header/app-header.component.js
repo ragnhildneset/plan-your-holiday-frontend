@@ -44,6 +44,11 @@ class AppHeaderComponentController{
       this.$state.go('categories');
     };
 
+    // Development for Travel
+    showTravel () {
+      this.$state.go('travel');
+    };
+
     isAuthenticated(){
       return this.UserService.isAuthenticated();
     }

@@ -26,7 +26,7 @@ class EntryPageComponentController{
     };
 
     login () {
-      this.$state.go('main');
+      this.$state.go('enter-journey');
     };
 
     static get $inject(){

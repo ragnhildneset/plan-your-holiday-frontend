@@ -1,20 +1,28 @@
 'use strict';
 
 import AttractionsComponent from '../components/view-attractions/view-attractions';
+import TravelComponent from '../components/view-travel/view-travel.component';
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
-
+import TravelService from './../services/travel/travel.service';
 import EntryPageComponent from './../components/entry-page/entry-page';
 import LoginPageComponent from './../components/login-page/login-page.component';
 import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
-import MainComponent from './../components/main/main';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
+
+
+
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
     return attractionsService.allBest();
+}
+
+resolveTravel.$inject = [TravelService.name];
+function resolveTravel(TravelService){
+    return TravelService.list();
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -44,10 +52,6 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/about',
             component: AboutPageComponent.name
         })
-        .state('main', {
-            url: '/main',
-            component: MainComponent.name
-        })
         .state('categories', {
             url: '/categories',
             component: CategorySelectionComponent.name,
@@ -60,6 +64,13 @@ export default function config ($stateProvider, $urlRouterProvider){
             component: AttractionsComponent.name,
             resolve: {
               attractions : resolveAttractions
+          }
+        })
+        .state('travel', {
+            url: '/travel',
+            component: TravelComponent.name,
+            resolve: {
+              travel : resolveTravel              
             }
         });
 
