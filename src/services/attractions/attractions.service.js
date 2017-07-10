@@ -8,10 +8,8 @@ export default class AttractionsService {
     }
 
     constructor($http,API_URL) {
-        
         this.$http = $http;
         this.resourceUrl = `${ API_URL }/attractions/`;
-
     }
 
     static get name(){
@@ -19,16 +17,38 @@ export default class AttractionsService {
     }
 
     list() {
-
         let url = this.resourceUrl;
         return this.$http.get(url).then(responce => {
-
             return new Promise((resolve, reject) => {
                 resolve(responce.data);
-
             });
-
         });
+    }
 
+    best() {
+        let url = this.resourceUrl + 'top/10/';
+        return this.$http.get(url).then(responce => {
+            return new Promise((resolve, reject) => {
+                resolve(responce.data);
+            });
+        });
+    }
+
+    allBest() {
+        let url = this.resourceUrl + 'top/';
+        return this.$http.get(url).then(responce => {
+            return new Promise((resolve, reject) => {
+                resolve(responce.data);
+            });
+        });
+    }
+
+    getTop(limit, category) {
+        let url = this.resourceUrl + 'top/' + limit + '/' + category;
+        return this.$http.get(url).then(responce => {
+            return new Promise((resolve, reject) => {
+                resolve(responce.data);
+            });
+        });
     }
 }

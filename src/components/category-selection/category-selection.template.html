@@ -1,10 +1,154 @@
-<div class="full-background-image">
-  <header class="jumbotron">
-     <div class="inner cover">
-        <h1 class="cover-heading">Select Categories</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <div class="full-background-image">
+
+    <header class="jumbotron">
+      <div class="inner cover">
+        <h1 class="cover-heading">What would you like to visit!</h1>
         <p>Select your Category Preferences for the upcoming trips</p>
       </div>
-   </header>
+    </header>
+    <div class= "panel panel-default">
+      <div class="panel-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="box3">
+                  <div class="info">
+                    <h4 class="text-center">Monuments</h4>
+                    <br> <br> <br> <br> <br> <br> <br>
+                    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box4">
+                  <div class="info">
+                    <h4 class="text-center">Museums</h4>
+                    <br> <br> <br> <br> <br> <br> <br>
+                    <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box5">
+                  <div class="info">
+                    <h4 class="text-center">Parks</h4>
+                    <br> <br> <br> <br> <br> <br> <br>
+                    <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box6">
+                  <div class="info">
+                    <h4 class="text-center">Churches</h4>
+                    <br> <br> <br> <br> <br> <br> <br>
+                    <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+         <div class="container">
+           <div class="row">
+             <div class="col-md-5">
+         <br>
+         <br>
+         <canvas id="myPieChart" width="400" height="400"></canvas>
+       </div>
+
+       <div class="col-6">
+         <div class="container">
+           <div class="row">
+             <div class = "container">
+               <div class = "column">
+                 <div ng-repeat="attraction in $ctrl.attractions | limitTo:10">
+                   <div class="col-md-3">
+                     <div class="thumbbox">
+                       <p class="text-center"> {{attraction.title}} </p>
+                       <input type="checkbox" ng-click='$ctrl.click(attraction._id)' value="">
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         <div>
+       </div>
+
+     </div>
+
+     <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="$ctrl.calculate()"> <h2> Receive the best Schedule</h2> </button>
 
 
-</div>
+  </div>
+  </div>
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
+  <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+  <script>
+    $('#ex1').slider({
+  	   formatter: function(value) {
+  		     return 'Current value: ' + value;
+  	      }
+        });
+    $('#ex2').slider({
+      formatter: function(value) {
+        return 'Current value: ' + value;
+      }
+    });
+    $('#ex3').slider({
+      formatter: function(value) {
+        return 'Current value: ' + value;
+      }
+    });
+    $('#ex4').slider({
+      formatter: function(value) {
+        return 'Current value: ' + value;
+      }
+    });
+  </script>
+  <!-- <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script>
+    var ctx = document.getElementById("myPieChart");
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: [300, 50, 100],
+          backgroundColor: [
+            'rgb(255, 0, 0)',
+            'rgb(9, 99, 249)',
+            'rgb(253, 254, 42)',
+          ]
+        }]
+      }
+    });
+  </script> -->
+
+</html>

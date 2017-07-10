@@ -1,0 +1,79 @@
+
+.box3 {
+    background-image: url('http://mediaresources.idiva.com/media/photogallery/2012/Aug/monuments_colosseum1_600x450.jpg');
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+    width:250px;
+    display: inline-block;
+    height: 250px;
+    background-size: cover;
+}
+.box4 {
+    background-image: url('http://www.smb.museum/typo3temp/_processed_/2/1/csm_Canova_Raum_5_1920_xl_dd653b4101.jpg');
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+    width:250px;
+    display: inline-block;
+    height: 250px;
+    background-size: cover;
+}
+.box5 {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqvtDuRjjHtkPHwJaX8T-XLaHVL-XRQ21DwtTuuCcrUWoF1D11');
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+    width:250px;
+    display: inline-block;
+    height: 250px;
+    background-size: cover;
+}
+.box6 {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB9NgM9e3wVM0YzBGuFmjyN0pTYJoBfN-SVWWhFLEeYjxULse5');
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+    width:250px;
+    display: inline-block;
+    height: 250px;
+    background-size: cover;
+}
+
+.thumbbox {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: center;
+    display: block;
+    margin-top: 60px;
+    width:250px;
+    display: inline-block;
+    height: 250px;
+    background-size: cover;
+}
+.info h4 {
+    color: #ffffff;
+    font-size: 26px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+#ex1Slider .slider-selection {
+	background: #BABABA;
+
+}
+#ex1Slider .slider-handle {
+	background: blue;
+}

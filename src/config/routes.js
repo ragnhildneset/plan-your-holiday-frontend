@@ -17,15 +17,13 @@ import CategorySelectionComponent from './../components/category-selection/categ
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
-    return attractionsService.list();
+    return attractionsService.allBest();
 }
 
 resolveTravel.$inject = [TravelService.name];
 function resolveTravel(TravelService){
     return TravelService.list();
 }
-
-
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config ($stateProvider, $urlRouterProvider){
@@ -56,7 +54,10 @@ export default function config ($stateProvider, $urlRouterProvider){
         })
         .state('categories', {
             url: '/categories',
-            component: CategorySelectionComponent.name
+            component: CategorySelectionComponent.name,
+            resolve: {
+              attractions : resolveAttractions
+            }
         })
         .state('attractions', {
             url: '/attractions',
@@ -71,8 +72,6 @@ export default function config ($stateProvider, $urlRouterProvider){
             resolve: {
               travel : resolveTravel              
             }
-            
-          
         });
 
             /*SB: This segment removes the # from the URL
