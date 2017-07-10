@@ -1,10 +1,11 @@
 'use strict';
 
 import AttractionsComponent from '../components/view-attractions/view-attractions';
+import TravelComponent from '../components/view-travel/view-travel.component';
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
 import AttractionsService from './../services/attractions/attractions.service';
-
+import TravelService from './../services/travel/travel.service';
 import EntryPageComponent from './../components/entry-page/entry-page';
 import LoginPageComponent from './../components/login-page/login-page.component';
 import PartnersComponent from './../components/partners/partners';
@@ -17,6 +18,10 @@ function resolveAttractions(attractionsService){
     return attractionsService.list();
 }
 
+resolveTravel.$inject = [TravelService.name];
+function resolveTravel(TravelService){
+    return TravelService.list();
+}
 
 
 
@@ -61,6 +66,15 @@ export default function config ($stateProvider, $urlRouterProvider){
             resolve: {
               attractions : resolveAttractions
           }
+        })
+        .state('travel', {
+            url: '/travel',
+            component: TravelComponent.name,
+            resolve: {
+              travel : resolveTravel              
+            }
+            
+          
         });
 
             /*SB: This segment removes the # from the URL
