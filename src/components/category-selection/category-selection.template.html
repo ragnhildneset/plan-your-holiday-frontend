@@ -88,8 +88,8 @@
                <div class = "column">
                  <div ng-repeat="attraction in $ctrl.attractions">
                    <div class="col-md-3">
-                     <div class="thumbbox">
-                       <p class="text-center"> {{attraction.title}} </p>
+                     <div class="thumbbox" style="background-image: url({{attraction.filename}}); background-size: cover; background-repeat: no-repeat; background-position: center">
+                       <p class="text-center" style="font-size:20px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"><strong> {{attraction.title}} <strong></p>
                        <input type="checkbox" ng-click='$ctrl.click(attraction._id)' value="">
                      </div>
                    </div>

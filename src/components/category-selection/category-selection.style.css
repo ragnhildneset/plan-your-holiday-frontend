@@ -75,9 +75,6 @@
     height: 250px;
     background-size: cover;
 }
-.thumbbox {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB9NgM9e3wVM0YzBGuFmjyN0pTYJoBfN-SVWWhFLEeYjxULse5');
-}
 .info h4 {
     color: #ffffff;
     font-size: 26px;
@@ -101,4 +98,7 @@
   background-size: cover;
   background-color: #bdbdbd;
 
+}
+.text-center {
+  color: #ffffff;
 }
