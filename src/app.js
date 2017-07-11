@@ -29,6 +29,7 @@ import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
 import CategorySelection from './components/category-selection/category-selection';
+import enterJourney from './components/enter-journey/enter-journey';
 
 
 let app = angular.module('app', [
@@ -50,7 +51,8 @@ let app = angular.module('app', [
     Partners.name,
     AboutPage.name,
     CategorySelection.name,
-    CityService.name
+    CityService.name,
+    enterJourney.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

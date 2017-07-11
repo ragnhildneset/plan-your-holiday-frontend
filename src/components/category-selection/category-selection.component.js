@@ -4,6 +4,7 @@
 import template from './category-selection.template.html';
 import AttractionsService from './../../services/attractions/attractions.service';
 import UserService from './../../services/users/user.service';
+import TravelService from './../../services/travel/travel.service';
 
 
 class CategorySelectionComponent {
@@ -22,11 +23,12 @@ class CategorySelectionComponent {
 
 class CategorySelectionComponentController {
 
-    constructor($state, $window, AttractionsService, UserService){
+    constructor($state, $window, AttractionsService, UserService, TravelService){
         this.$state = $state;
         this.$window = $window;
         this.AttractionsService = AttractionsService;
         this.UserService = UserService;
+        this.TravelService = TravelService;
         this.mustsees = [];
     }
 
@@ -58,23 +60,33 @@ class CategorySelectionComponentController {
         console.log("User " + this.UserService.getCurrentUser().username + " is currently logged in");
         this.density = this.userService.getCurrentUser().density;
       }
-      // TODO replace hardcoded value with value from the travel selection
 
-      var arrival = JSON.parse(this.$window.localStorage['journey']).arrival;
-      var departure = JSON.parse(this.$window.localStorage['journey']).departure;
-      console.log(arrival + "/" + departure);
+      var arrival = new Date(JSON.parse(this.$window.localStorage['journey']).arrival);
+      var departure = new Date(JSON.parse(this.$window.localStorage['journey']).departure);
+
       var timeDiff = Math.abs(arrival.getTime() - departure.getTime());
       var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      console.log(diffDays);
-      this.duration = 4;
-      // TODO replace hardcoded values with values from the sliders
 
-      console.log($('#Monuments').val());
+      this.duration = 4;
+      if(diffDays > 0) {
+        this.duration = diffDays;
+      }
+
+      this.sliderSelection = [$('#Monuments').val(), $('#Museums').val(), $('#Parks').val(), $('#Churches').val()];
+      var sum = 0;
+      for(var i = 0; i < this.sliderSelection.length; i++) {
+        sum = sum + parseInt(this.sliderSelection[i]);
+      }
+      if(sum == 0) {
+        this.sliderSelection = [1, 1, 1, 1];
+        sum = 4;
+      }
+
       this.attractionWeight = [
-        Math.round(this.density * this.duration * 0.3), // Monuments
-        Math.round(this.density * this.duration * 0.2), // Museums
-        Math.round(this.density * this.duration * 0.4), // Parks
-        Math.round(this.density * this.duration * 0.1)  // Churches
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[0])/sum)), // Monuments
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[1])/sum)), // Museums
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[2])/sum)), // Parks
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[3])/sum))  // Churches
       ];
 
       // Within these arrays all the relevant attractions for the schedule are stored
@@ -152,18 +164,31 @@ class CategorySelectionComponentController {
           current = current + 1;
         }
       }
-      // TODO replace hardcoded values with real values
-      var travel = {'username': "johndoe",
-          //'username': this.UserService.getCurrentUser().username,
+
+      var username = "johndoe";
+      if(this.UserService.isAuthenticated()) {
+        username = this.UserService.getCurrentUser().username;
+      }
+      var id = 1;
+      var travel = {'_id': id,
+          'username': username,
           'arrival': arrival,
           'departure': departure,
           'schedule': schedule
         };
 
-        //console.log(travel);
+      //console.log(travel);
 
       // TODO post the created travel-object to the server
       // TODO open the schedule viewer with the created schedule
+
+      //let _id = this.movie['_id'];
+
+      this.TravelService.create(travel).then(data => {
+          //this.movie = JSON.parse(JSON.stringify(data));
+
+          this.$state.go('travel',{ travelId: id});
+      });
     }
 
     removeAlreadySelected() {
@@ -237,7 +262,7 @@ class CategorySelectionComponentController {
     }
 
     static get $inject(){
-        return ['$state', '$window', AttractionsService.name, UserService.name];
+        return ['$state', '$window', AttractionsService.name, UserService.name, TravelService.name];
     }
 }
 
