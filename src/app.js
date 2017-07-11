@@ -12,6 +12,9 @@ import animate from 'angular-animate';
 import datetimepicker from 'angular-bootstrap-datetimepicker';
 
 import UserService from './services/users/user';
+import AttractionsService from './services/attractions/attractions';
+import CityService from './services/cities/city';
+
 
 import Routes from './config/routes';
 import Middlewares from './config/middlewares';
@@ -28,6 +31,7 @@ import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
 import CategorySelection from './components/category-selection/category-selection';
+
 
 
 let app = angular.module('app', [
@@ -48,7 +52,8 @@ let app = angular.module('app', [
     LoginPage.name,
     Partners.name,
     AboutPage.name,
-    CategorySelection.name
+    CategorySelection.name,
+    CityService.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

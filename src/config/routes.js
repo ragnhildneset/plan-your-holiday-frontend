@@ -12,12 +12,17 @@ import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
 
-
-
+import AttractionsService from './../services/attractions/attractions.service'
+import CityService from './../services/cities/city.service'
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){
     return attractionsService.allBest();
+}
+
+resolveCities.$inject = [CityService.name];
+function resolveCities(cityService){
+    return cityService.list();
 }
 
 resolveTravel.$inject = [TravelService.name];
@@ -65,6 +70,13 @@ export default function config ($stateProvider, $urlRouterProvider){
             resolve: {
               attractions : resolveAttractions
           }
+        })
+        .state('enter-journey', {
+            url: '/enter-journey',
+            component: EnterJourneyComponent.name,
+            resolve: {
+                cities : resolveCities
+            }
         })
         .state('travel', {
             url: '/travel',
