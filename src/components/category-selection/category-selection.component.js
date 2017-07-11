@@ -22,8 +22,9 @@ class CategorySelectionComponent {
 
 class CategorySelectionComponentController {
 
-    constructor($state, AttractionsService, UserService){
+    constructor($state, $window, AttractionsService, UserService){
         this.$state = $state;
+        this.$window = $window;
         this.AttractionsService = AttractionsService;
         this.UserService = UserService;
         this.mustsees = [];
@@ -52,11 +53,23 @@ class CategorySelectionComponentController {
 
     calculate() {
       // Set up required data
-      // TODO replace hardcoded value with value from the user
-      this.density = 3;
+      this.density = 3; // mocked value
+      if(this.UserService.isAuthenticated()) {
+        console.log("User " + this.UserService.getCurrentUser().username + " is currently logged in");
+        this.density = this.userService.getCurrentUser().density;
+      }
       // TODO replace hardcoded value with value from the travel selection
+
+      var arrival = JSON.parse(this.$window.localStorage['journey']).arrival;
+      var departure = JSON.parse(this.$window.localStorage['journey']).departure;
+      console.log(arrival + "/" + departure);
+      var timeDiff = Math.abs(arrival.getTime() - departure.getTime());
+      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      console.log(diffDays);
       this.duration = 4;
       // TODO replace hardcoded values with values from the sliders
+
+      console.log($('#Monuments').val());
       this.attractionWeight = [
         Math.round(this.density * this.duration * 0.3), // Monuments
         Math.round(this.density * this.duration * 0.2), // Museums
@@ -110,11 +123,10 @@ class CategorySelectionComponentController {
       this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
 
       // create a travel-object
-      var arrival = new Date("August 17, 2017, 10:00");
-      var departure = new Date("August 21, 2017, 23:00");
-
       var schedule = [];
       var current = 0;
+
+      this.printSelection();
       // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
         for(var j = 0; j < this.density; j++) {
@@ -128,6 +140,8 @@ class CategorySelectionComponentController {
             start.setHours(start.getHours() + 1);
           }
           var end = new Date(start);
+
+          //console.log("  (" + (current+1) + ") " + this.selection[current]);
 
           end.setMinutes(end.getMinutes() + this.selection[current].duration);
           var activity = {'attractionID': this.selection[current]._id,
@@ -223,7 +237,7 @@ class CategorySelectionComponentController {
     }
 
     static get $inject(){
-        return ['$state', AttractionsService.name, UserService.name];
+        return ['$state', '$window', AttractionsService.name, UserService.name];
     }
 }
 

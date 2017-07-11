@@ -13,7 +13,7 @@ import CategorySelectionComponent from './../components/category-selection/categ
 import EnterJourneyComponent from './../components/enter-journey/enter-journey';
 
 import AttractionsService from './../services/attractions/attractions.service'
-import CityService from './../services/cities/city.service'
+import CityService from './../services/cities/city.service';
 
 resolveAttractions.$inject = [AttractionsService.name];
 function resolveAttractions(attractionsService){

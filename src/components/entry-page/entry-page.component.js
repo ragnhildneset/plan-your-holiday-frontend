@@ -17,8 +17,22 @@ class EntryPageComponent {
 }
 
 class EntryPageComponentController{
-    constructor($state){
+    constructor($state,UserService) {
         this.$state = $state;
+        this.UserService = UserService;
+    }
+
+    $onInit() {
+        this.login = {};
+    }
+
+    submit() {
+        let user = this.login.username;
+        let password = this.login.password;
+
+        this.UserService.login(user,password).then(()=> {
+            this.$state.go('enter-journey',{});
+        });
     }
 
     getStarted () {
@@ -30,12 +44,8 @@ class EntryPageComponentController{
     };
 
     static get $inject(){
-        return ['$state'];
+        return ['$state', UserService.name];
     }
-
-
-
-
 }
 
 export default EntryPageComponent;

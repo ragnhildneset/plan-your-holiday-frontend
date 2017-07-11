@@ -31,7 +31,6 @@ import AboutPage from './components/about-page/about-page';
 import CategorySelection from './components/category-selection/category-selection';
 
 
-
 let app = angular.module('app', [
     uiRouter,
     bootstrap,
