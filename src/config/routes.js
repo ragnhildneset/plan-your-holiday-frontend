@@ -4,13 +4,13 @@ import AttractionsComponent from '../components/view-attractions/view-attraction
 import TravelComponent from '../components/view-travel/view-travel.component';
 import AppHeaderComponent from './../components/app-header/app-header';
 import GetStartedComponent from './../components/app-getstarted/app-getstarted';
-import AttractionsService from './../services/attractions/attractions.service';
 import TravelService from './../services/travel/travel.service';
 import EntryPageComponent from './../components/entry-page/entry-page';
 import LoginPageComponent from './../components/login-page/login-page.component';
 import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
+import EnterJourneyComponent from './../components/enter-journey/enter-journey';
 
 import AttractionsService from './../services/attractions/attractions.service'
 import CityService from './../services/cities/city.service'
@@ -82,7 +82,7 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/travel',
             component: TravelComponent.name,
             resolve: {
-              travel : resolveTravel              
+              travel : resolveTravel
             }
         });
 

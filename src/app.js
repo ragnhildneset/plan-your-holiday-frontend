@@ -14,7 +14,7 @@ import datetimepicker from 'angular-bootstrap-datetimepicker';
 import UserService from './services/users/user';
 import AttractionsService from './services/attractions/attractions';
 import CityService from './services/cities/city';
-
+import TravelService from './services/travel/travel';
 
 import Routes from './config/routes';
 import Middlewares from './config/middlewares';
@@ -22,9 +22,7 @@ import Middlewares from './config/middlewares';
 import AppContent from './components/app-content/app-content';
 import ViewAttractions from './components/view-attractions/view-attractions';
 import EnterJourney from './components/enter-journey/enter-journey';
-import AttractionsService from './services/attractions/attractions';
 import ViewTravel from './components/view-travel/view-travel';
-import TravelService from './services/travel/travel';
 import AppGetstarted from './components/app-getstarted/app-getstarted';
 import EntryPage from './components/entry-page/entry-page';
 import LoginPage from './components/login-page/login-page';
