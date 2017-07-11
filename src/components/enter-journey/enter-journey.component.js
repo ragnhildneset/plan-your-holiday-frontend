@@ -4,10 +4,14 @@
 import template from './enter-journey.template.html';
 import UserService from './../../services/users/user.service';
 
+
 class EnterJourneyComponent {
     constructor(){
         this.controller = EnterJourneyComponentController;
         this.template = template;
+        this.bindings = {
+            cities: '<',
+        }
     }
 
     static get name() {
