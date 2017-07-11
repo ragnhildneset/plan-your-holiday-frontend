@@ -48,6 +48,10 @@ class AppHeaderComponentController{
     showTravel () {
       this.$state.go('travel');
     };
+    
+    enterJourney () {
+      this.$state.go('enter-journey');
+    };
 
     isAuthenticated(){
       return this.UserService.isAuthenticated();

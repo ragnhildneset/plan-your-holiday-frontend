@@ -11,8 +11,7 @@ import LoginPageComponent from './../components/login-page/login-page.component'
 import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
-
-
+import EnterJourneyComponent from './../components/enter-journey/enter-journey';
 
 
 resolveAttractions.$inject = [AttractionsService.name];
@@ -70,8 +69,12 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/travel',
             component: TravelComponent.name,
             resolve: {
-              travel : resolveTravel              
+              travel : resolveTravel
             }
+        })
+        .state('enter-journey', {
+            url: '/journey',
+            component: EnterJourneyComponent.name
         });
 
             /*SB: This segment removes the # from the URL
