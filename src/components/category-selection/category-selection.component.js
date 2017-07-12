@@ -72,6 +72,8 @@ class CategorySelectionComponentController {
         this.duration = diffDays;
       }
 
+      var requiredAttractions = this.duration * this.density;
+
       this.sliderSelection = [$('#Monuments').val(), $('#Museums').val(), $('#Parks').val(), $('#Churches').val()];
       var sum = 0;
       for(var i = 0; i < this.sliderSelection.length; i++) {
@@ -88,6 +90,16 @@ class CategorySelectionComponentController {
         Math.round(this.density * this.duration * (parseInt(this.sliderSelection[2])/sum)), // Parks
         Math.round(this.density * this.duration * (parseInt(this.sliderSelection[3])/sum))  // Churches
       ];
+
+      while((this.attractionWeight[0] + this.attractionWeight[1] + this.attractionWeight[2] + this.attractionWeight[3]) < requiredAttractions) {
+        switch(Math.floor((Math.random() * 4))) {
+          case 0: this.attractionWeight[0] = this.attractionWeight[0] + 1; break;
+          case 1: this.attractionWeight[1] = this.attractionWeight[1] + 1; break;
+          case 2: this.attractionWeight[2] = this.attractionWeight[2] + 1; break;
+          case 3: this.attractionWeight[3] = this.attractionWeight[3] + 1; break;
+          default: this.attractionWeight[0] = this.attractionWeight[0] + 1; break;
+        }
+      }
 
       // Within these arrays all the relevant attractions for the schedule are stored
       this.monuments = [];
@@ -153,8 +165,6 @@ class CategorySelectionComponentController {
           }
           var end = new Date(start);
 
-          //console.log("  (" + (current+1) + ") " + this.selection[current]);
-
           end.setMinutes(end.getMinutes() + this.selection[current].duration);
           var activity = {'attractionID': this.selection[current]._id,
               'start': start,
@@ -177,17 +187,13 @@ class CategorySelectionComponentController {
           'schedule': schedule
         };
 
-      //console.log(travel);
-
       // TODO post the created travel-object to the server
       // TODO open the schedule viewer with the created schedule
-
-      //let _id = this.movie['_id'];
 
       this.TravelService.create(travel).then(data => {
           //this.movie = JSON.parse(JSON.stringify(data));
 
-          this.$state.go('travel',{ travelId: id});
+          this.$state.go('travel',{ travelID: id});
       });
     }
 
