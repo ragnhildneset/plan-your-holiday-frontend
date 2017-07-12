@@ -12,6 +12,7 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 						<input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.login.username"  placeholder="Enter your Username"/>
+						<div ng-messages="LoginForm.username.$error" role="alert" multiple="">
 					</div>
 				</div>
 			</div>
