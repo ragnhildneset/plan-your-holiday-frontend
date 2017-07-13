@@ -149,51 +149,53 @@ class CategorySelectionComponentController {
       // create a travel-object
       var schedule = [];
       var current = 0;
-
-      this.printSelection();
       // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
+        var last = null;
         for(var j = 0; j < this.density; j++) {
           var start = 0;
-          if(j == 0) {
+          if(last == null) {
             start = new Date(arrival);
             start.setDate(arrival.getDate() + parseInt(i));
           }
           else {
-            start = new Date(schedule[i*this.density + j - 1].end);
+            start = new Date(last);
             start.setHours(start.getHours() + 1);
           }
           var end = new Date(start);
-
           end.setMinutes(end.getMinutes() + this.selection[current].duration);
-          var activity = {'attractionID': this.selection[current]._id,
-              'start': start,
-              'end': end};
 
+          this.start = "" + start.getFullYear() + "." + start.getMonth() + "." + start.getDay() + " " + start.getHours() + ":" + start.getMinutes();
+          this.end = "" + end.getFullYear() + "." + end.getMonth() + "." + end.getDay() + " " + end.getHours() + ":" + end.getMinutes();
+
+          var activity = {'attractionID': this.selection[current]._id,
+              'startTime': this.start,
+              'endTime': this.end};
+          last = end;
           schedule[i*this.density + j] = activity;
           current = current + 1;
         }
       }
 
-      var username = "johndoe";
+      var username = "johndoe" + Math.random();
       if(this.UserService.isAuthenticated()) {
         username = this.UserService.getCurrentUser().username;
       }
-      var id = 1;
-      var travel = {'_id': id,
+
+      var travel = {
           'username': username,
           'arrival': arrival,
           'departure': departure,
           'schedule': schedule
         };
 
-      // TODO post the created travel-object to the server
-      // TODO open the schedule viewer with the created schedule
-
+      // very dirty workaround!
+      // TODO fix this
       this.TravelService.create(travel).then(data => {
-          //this.movie = JSON.parse(JSON.stringify(data));
-
-          this.$state.go('travel',{ travelID: id});
+        this.TravelService.getbyUser(username).then(data => {
+          console.log(data._id);
+          this.$state.go('travel',{ travelID: data._id});
+        });
       });
     }
 

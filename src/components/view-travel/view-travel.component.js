@@ -11,14 +11,11 @@ class ViewTravelComponent {
         this.bindings = {
             travel: '<',
         }
-        
     }
 
     static get name() {
         return 'viewTravel';
     }
-
-
 }
 
 class ViewTravelComponentController{
@@ -26,18 +23,11 @@ class ViewTravelComponentController{
         this.$state = $state;
         this.TravelService = TravelService;
         this.UserService = UserService;
-        
-
     }
-
-   
 
     static get $inject(){
         return ['$state', TravelService.name, UserService.name];
     }
-
-    
-
 
     delete() {
         if (this.UserService.isAuthenticated()) {
@@ -50,7 +40,6 @@ class ViewTravelComponentController{
             this.$state.go('login',{});
         }
     };
-
 
     getPosterURL(){
         let posterURL = 'http://placehold.it/32x32';
@@ -68,7 +57,9 @@ class ViewTravelComponentController{
         return posterURL;
     }
 
+    newtravel() {
+      console.log(this.travel);
+    }
 }
-
 
 export default ViewTravelComponent;
