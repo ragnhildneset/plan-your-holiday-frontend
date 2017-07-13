@@ -58,7 +58,7 @@ class CategorySelectionComponentController {
       this.density = 3; // mocked value
       if(this.UserService.isAuthenticated()) {
         console.log("User " + this.UserService.getCurrentUser().username + " is currently logged in");
-        this.density = this.userService.getCurrentUser().density;
+        this.density = this.UserService.getCurrentUser().density;
       }
 
       var arrival = new Date(JSON.parse(this.$window.localStorage['journey']).arrival);
