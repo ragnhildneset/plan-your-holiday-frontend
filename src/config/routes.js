@@ -15,9 +15,9 @@ import EnterJourneyComponent from './../components/enter-journey/enter-journey';
 import AttractionsService from './../services/attractions/attractions.service'
 import CityService from './../services/cities/city.service';
 
-resolveAttractions.$inject = [AttractionsService.name];
-function resolveAttractions(attractionsService){
-    return attractionsService.allBest();
+resolveAttractions.$inject = ['$stateParams', AttractionsService.name];
+function resolveAttractions($stateParams,attractionsService){
+    return attractionsService.city($stateParams.cityId);
 }
 
 resolveCities.$inject = [CityService.name];
@@ -58,7 +58,7 @@ export default function config ($stateProvider, $urlRouterProvider){
             component: AboutPageComponent.name
         })
         .state('categories', {
-            url: '/categories',
+            url: '/categories:cityId',
             component: CategorySelectionComponent.name,
             resolve: {
               attractions : resolveAttractions

@@ -25,6 +25,16 @@ export default class AttractionsService {
         });
     }
 
+    city(cityId) {
+        let url = `${ this.resourceUrl }city/${ cityId }`;
+        return this.$http.get(url).then(responce => {
+            return new Promise((resolve, reject) => {
+                resolve(responce.data);
+            });
+
+        })
+    }
+
     best() {
         let url = this.resourceUrl + 'top/10/';
         return this.$http.get(url).then(responce => {

@@ -34,7 +34,10 @@ class EnterJourneyComponentController{
 
     submit() {
         this.$window.localStorage['journey'] = JSON.stringify(this.journey);
-        this.$state.go('categories');
+
+        var _id = this.journey.cityId;
+        this.$state.go('categories', { cityId:_id});
+
     };
 }
 
