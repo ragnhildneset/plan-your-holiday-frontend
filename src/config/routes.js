@@ -11,6 +11,8 @@ import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
 import EnterJourneyComponent from './../components/enter-journey/enter-journey';
+import FeedbackComponent from './../components/feedback/feedback';
+
 
 import AttractionsService from './../services/attractions/attractions.service'
 import CityService from './../services/cities/city.service';
@@ -84,6 +86,10 @@ export default function config ($stateProvider, $urlRouterProvider){
             resolve: {
               travel : resolveTravel
             }
+        })
+        .state('feedback', {
+            url: '/feedback',
+            component: FeedbackComponent.name,
         });
 
             /*SB: This segment removes the # from the URL
