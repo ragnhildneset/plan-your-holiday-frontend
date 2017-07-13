@@ -1,7 +1,9 @@
 
 'use strict';
 
+import UserService from './../../services/users/user.service';
 import template from './entry-page.template.html';
+import './entry-page.style.css';
 
 
 
