@@ -18,21 +18,23 @@ export default class TravelService {
     }
 
    list() {
-
         let url = this.resourceUrl+'/getTravels';
-       
-        return this.$http.get(url).then(responce => {
 
+        return this.$http.get(url).then(responce => {
             return new Promise((resolve, reject) => {
                 resolve(responce.data);
 
             });
-
         });
-
     }
 
-   
+    get(id) {
+         let url = `${ this.resourceUrl } ${ id }`;
 
-
+         return this.$http.get(url).then(responce => {
+             return new Promise((resolve, reject) => {
+                 resolve(responce.data);
+             });
+         });
+     }
 }
