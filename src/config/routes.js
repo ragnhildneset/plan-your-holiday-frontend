@@ -25,9 +25,9 @@ function resolveCities(cityService){
     return cityService.list();
 }
 
-resolveTravel.$inject = [TravelService.name];
-function resolveTravel(TravelService){
-    return TravelService.list();
+resolveTravel.$inject = ['$stateParams', TravelService.name];
+function resolveTravel($stateParams, TravelService){
+    return TravelService.get($stateParams.travelID);
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -79,7 +79,7 @@ export default function config ($stateProvider, $urlRouterProvider){
             }
         })
         .state('travel', {
-            url: '/travel',
+            url: '/travel/:travelID',
             component: TravelComponent.name,
             resolve: {
               travel : resolveTravel

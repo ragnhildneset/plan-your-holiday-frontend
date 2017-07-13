@@ -4,6 +4,7 @@
 import template from './category-selection.template.html';
 import AttractionsService from './../../services/attractions/attractions.service';
 import UserService from './../../services/users/user.service';
+import TravelService from './../../services/travel/travel.service';
 
 
 class CategorySelectionComponent {
@@ -22,11 +23,12 @@ class CategorySelectionComponent {
 
 class CategorySelectionComponentController {
 
-    constructor($state, $window, AttractionsService, UserService){
+    constructor($state, $window, AttractionsService, UserService, TravelService){
         this.$state = $state;
         this.$window = $window;
         this.AttractionsService = AttractionsService;
         this.UserService = UserService;
+        this.TravelService = TravelService;
         this.mustsees = [];
     }
 
@@ -58,24 +60,46 @@ class CategorySelectionComponentController {
         console.log("User " + this.UserService.getCurrentUser().username + " is currently logged in");
         this.density = this.userService.getCurrentUser().density;
       }
-      // TODO replace hardcoded value with value from the travel selection
 
-      var arrival = JSON.parse(this.$window.localStorage['journey']).arrival;
-      var departure = JSON.parse(this.$window.localStorage['journey']).departure;
-      console.log(arrival + "/" + departure);
+      var arrival = new Date(JSON.parse(this.$window.localStorage['journey']).arrival);
+      var departure = new Date(JSON.parse(this.$window.localStorage['journey']).departure);
+
       var timeDiff = Math.abs(arrival.getTime() - departure.getTime());
       var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      console.log(diffDays);
-      this.duration = 4;
-      // TODO replace hardcoded values with values from the sliders
 
-      console.log($('#Monuments').val());
+      this.duration = 4;
+      if(diffDays > 0) {
+        this.duration = diffDays;
+      }
+
+      var requiredAttractions = this.duration * this.density;
+
+      this.sliderSelection = [$('#Monuments').val(), $('#Museums').val(), $('#Parks').val(), $('#Churches').val()];
+      var sum = 0;
+      for(var i = 0; i < this.sliderSelection.length; i++) {
+        sum = sum + parseInt(this.sliderSelection[i]);
+      }
+      if(sum == 0) {
+        this.sliderSelection = [1, 1, 1, 1];
+        sum = 4;
+      }
+
       this.attractionWeight = [
-        Math.round(this.density * this.duration * 0.3), // Monuments
-        Math.round(this.density * this.duration * 0.2), // Museums
-        Math.round(this.density * this.duration * 0.4), // Parks
-        Math.round(this.density * this.duration * 0.1)  // Churches
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[0])/sum)), // Monuments
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[1])/sum)), // Museums
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[2])/sum)), // Parks
+        Math.round(this.density * this.duration * (parseInt(this.sliderSelection[3])/sum))  // Churches
       ];
+
+      while((this.attractionWeight[0] + this.attractionWeight[1] + this.attractionWeight[2] + this.attractionWeight[3]) < requiredAttractions) {
+        switch(Math.floor((Math.random() * 4))) {
+          case 0: this.attractionWeight[0] = this.attractionWeight[0] + 1; break;
+          case 1: this.attractionWeight[1] = this.attractionWeight[1] + 1; break;
+          case 2: this.attractionWeight[2] = this.attractionWeight[2] + 1; break;
+          case 3: this.attractionWeight[3] = this.attractionWeight[3] + 1; break;
+          default: this.attractionWeight[0] = this.attractionWeight[0] + 1; break;
+        }
+      }
 
       // Within these arrays all the relevant attractions for the schedule are stored
       this.monuments = [];
@@ -125,45 +149,54 @@ class CategorySelectionComponentController {
       // create a travel-object
       var schedule = [];
       var current = 0;
-
-      this.printSelection();
       // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
+        var last = null;
         for(var j = 0; j < this.density; j++) {
           var start = 0;
-          if(j == 0) {
+          if(last == null) {
             start = new Date(arrival);
             start.setDate(arrival.getDate() + parseInt(i));
           }
           else {
-            start = new Date(schedule[i*this.density + j - 1].end);
+            start = new Date(last);
             start.setHours(start.getHours() + 1);
           }
           var end = new Date(start);
-
-          //console.log("  (" + (current+1) + ") " + this.selection[current]);
-
           end.setMinutes(end.getMinutes() + this.selection[current].duration);
-          var activity = {'attractionID': this.selection[current]._id,
-              'start': start,
-              'end': end};
 
+          this.start = "" + start.getFullYear() + "." + start.getMonth() + "." + start.getDay() + " " + start.getHours() + ":" + start.getMinutes();
+          this.end = "" + end.getFullYear() + "." + end.getMonth() + "." + end.getDay() + " " + end.getHours() + ":" + end.getMinutes();
+
+          var activity = {'attractionID': this.selection[current]._id,
+              'startTime': this.start,
+              'endTime': this.end};
+          last = end;
           schedule[i*this.density + j] = activity;
           current = current + 1;
         }
       }
-      // TODO replace hardcoded values with real values
-      var travel = {'username': "johndoe",
-          //'username': this.UserService.getCurrentUser().username,
+
+      var username = "johndoe" + Math.random();
+      if(this.UserService.isAuthenticated()) {
+        username = this.UserService.getCurrentUser().username;
+      }
+
+      var travel = {
+          'username': username,
           'arrival': arrival,
           'departure': departure,
           'schedule': schedule
         };
 
-        //console.log(travel);
-
-      // TODO post the created travel-object to the server
-      // TODO open the schedule viewer with the created schedule
+      // very dirty workaround!
+      // TODO fix this
+      this.TravelService.create(travel).then(data => {
+        this.TravelService.getbyUser(username).then(data => {
+          console.log(data._id);
+          this.$state.go('travel',{ travelID: data._id});
+        });
+      });
     }
 
     removeAlreadySelected() {
@@ -237,7 +270,7 @@ class CategorySelectionComponentController {
     }
 
     static get $inject(){
-        return ['$state', '$window', AttractionsService.name, UserService.name];
+        return ['$state', '$window', AttractionsService.name, UserService.name, TravelService.name];
     }
 }
 
