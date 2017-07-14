@@ -2,6 +2,7 @@
 'use strict';
 
 import template from './feedback.template.html';
+import './feedback.style.css';
 import UserService from './../../services/users/user.service';
 
 
@@ -9,6 +10,9 @@ class FeedbackComponent {
     constructor(){
         this.controller = FeedbackComponentController;
         this.template = template;
+        this.bindings = {
+            travel: '<',
+        }
     }
 
     static get name() {

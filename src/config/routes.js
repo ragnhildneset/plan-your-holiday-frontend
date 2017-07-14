@@ -28,8 +28,13 @@ function resolveCities(cityService){
 }
 
 resolveTravel.$inject = [TravelService.name];
-function resolveTravel(TravelService){
+function resolveTravels(TravelService){
     return TravelService.list();
+}
+
+resolveTravel.$inject = ['$stateParams', TravelService.name];
+function resolveTravel($stateParams, TravelService){
+    return TravelService.list($stateParams.travelId);
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -88,8 +93,11 @@ export default function config ($stateProvider, $urlRouterProvider){
             }
         })
         .state('feedback', {
-            url: '/feedback',
+            url: '/feedback:travelId',
             component: FeedbackComponent.name,
+            resolve: {
+              travel : resolveTravel
+            }
         });
 
             /*SB: This segment removes the # from the URL
