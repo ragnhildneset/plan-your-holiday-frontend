@@ -11,6 +11,7 @@ import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
 import EnterJourneyComponent from './../components/enter-journey/enter-journey';
+import EditUserComponent from './../components/edit-user/edit-user';
 
 import AttractionsService from './../services/attractions/attractions.service'
 import CityService from './../services/cities/city.service';
@@ -84,6 +85,10 @@ export default function config ($stateProvider, $urlRouterProvider){
             resolve: {
               travel : resolveTravel
             }
+        })
+        .state('edit-user', {
+            url: '/preferences',
+            component: EditUserComponent.name
         });
 
             /*SB: This segment removes the # from the URL

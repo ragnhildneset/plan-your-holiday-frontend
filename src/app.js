@@ -30,6 +30,7 @@ import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
 import CategorySelection from './components/category-selection/category-selection';
 import enterJourney from './components/enter-journey/enter-journey';
+import EditUser from './components/edit-user/edit-user';
 
 
 let app = angular.module('app', [
@@ -52,7 +53,8 @@ let app = angular.module('app', [
     AboutPage.name,
     CategorySelection.name,
     CityService.name,
-    enterJourney.name
+    enterJourney.name,
+    EditUser.name
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

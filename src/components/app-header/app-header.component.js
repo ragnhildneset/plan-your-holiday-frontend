@@ -39,6 +39,10 @@ class AppHeaderComponentController{
       this.$state.go('login');
     };
 
+    editUser () {
+      this.$state.go('edit-user');
+    };
+
     // Development shortcut
     selectCategories () {
       this.$state.go('categories');
@@ -48,7 +52,7 @@ class AppHeaderComponentController{
     showTravel () {
       this.$state.go('travel');
     };
-    
+
     enterJourney () {
       this.$state.go('enter-journey');
     };
