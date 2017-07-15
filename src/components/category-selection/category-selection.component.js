@@ -169,6 +169,8 @@ class CategorySelectionComponentController {
           this.end = "" + end.getFullYear() + "." + end.getMonth() + "." + end.getDay() + " " + end.getHours() + ":" + end.getMinutes();
 
           var activity = {'attractionID': this.selection[current]._id,
+              'url':this.selection[current].url,
+              'attractionname': this.selection[current].title,
               'startTime': this.start,
               'endTime': this.end};
           last = end;
