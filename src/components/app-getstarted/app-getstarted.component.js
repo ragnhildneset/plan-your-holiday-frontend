@@ -34,11 +34,8 @@ class AppGetstartedComponentController
         let password = this.signup.password;
         let birthdate = this.signup.birthdate;
         let density = this.signup.density;
-        let currency = this.signup.currency;
 
-             
-
-        this.UserService.register(username, email, loginid, password, birthdate, density, currency).then(()=> {
+        this.UserService.register(username, email, loginid, password, birthdate, density).then(()=> {
             this.$state.go('enter-journey',{});
         });
     }

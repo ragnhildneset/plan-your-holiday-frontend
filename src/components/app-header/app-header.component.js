@@ -2,6 +2,7 @@
 'use strict';
 
 import UserService from './../../services/users/user.service';
+import TravelService from './../../services/travel/travel.service';
 
 import template from './app-header.template.html';
 import './app-header.style.css';
@@ -18,23 +19,19 @@ class AppHeaderComponent {
 }
 
 class AppHeaderComponentController{
-    constructor($state, UserService){
+    constructor($state, UserService, TravelService){
         this.$state = $state;
         this.UserService = UserService;
+        this.TravelService = TravelService;
     }
 
     home () {
-      console.log("Home clicked",this.UserService.getCurrentUser()._id);
-      if(this.UserService.getCurrentUser()._id=!null)
-        {
-        console.log("Logged User");
+      if(this.UserService.isAuthenticated()) {
         this.$state.go('enter-journey');
       }
-      else{
-        console.log("Not User");
+      else {
         this.$state.go('home');
       }
-      
     };
 
     partners () {
@@ -76,8 +73,13 @@ class AppHeaderComponentController{
       return user.username;
     }
 
+    logout() {
+      this.UserService.logout();
+      this.$state.go('home');
+    }
+
     static get $inject(){
-        return ['$state', UserService.name];
+        return ['$state', UserService.name, TravelService.name];
     }
 }
 

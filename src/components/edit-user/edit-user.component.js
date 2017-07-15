@@ -24,10 +24,9 @@ class EditUserComponentController{
         this.UserService.getPreferences(this.UserService.getCurrentUser().loginid).then(data => {
           this.username = data.username;
           this.loginID = data.loginid;
-          this.email = data.email;
 
-          var bd = new Date(data.birthday);
-          this.birthday = bd.getDay() + "." + bd.getMonth() + "." + bd.getFullYear();
+          this.email = data.email;
+          this.birthday = data.birthday;
 
           this.density = data.density;
           this.phonenumber = data.phonenumber;
@@ -35,6 +34,8 @@ class EditUserComponentController{
             this.phonenumber = "";
           }
         });
+
+        document.getElementById("confirmation").style.visibility = "hidden";
     }
 
     savedata() {
@@ -46,12 +47,13 @@ class EditUserComponentController{
         "username": this.username,
         "loginid": this.loginID,
         "email": this.email,
-        "birthday": new Date(this.birthday),
+        "birthday": this.birthday,
         "density": this.density,
         "phonenumber": this.phonenumber
       }
 
       this.UserService.setPreferences(this.UserService.getCurrentUser()._id, user);
+      document.getElementById("confirmation").style.visibility = "visible";
     }
 
     logout() {

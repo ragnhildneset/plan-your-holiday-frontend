@@ -16,7 +16,7 @@
        <div class="inner cover">
           <h1 class="cover-heading">{{$ctrl.username}}</h1>
           <p class="lead">
-            Site under construction...
+            Adapt your Userdata according to your current State.
           </p>
         </div>
      </header>
@@ -58,8 +58,8 @@
 
                 </tbody>
               </table>
-
-              <a data-original-title="Save all Data" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="$ctrl.savedata()"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+              <p id="confirmation">Data has been saved</p>
+              <a id="save" data-original-title="Save all Data" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="$ctrl.savedata()"><i class="glyphicon glyphicon-floppy-disk"></i></a>
               <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" ng-click="$ctrl.attemptdelete()"><i class="glyphicon glyphicon-remove"></i></a>
               <div id="delete" style="display:none">
                 <a data-original-title="Destroy this user permamently" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" visible="false" ng-click="$ctrl.deleteUser()">Ultimatly delete this Profile</a>
@@ -69,7 +69,20 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+     <div class="panel panel-info">
+       <div class="panel-heading">
+         <h3 class="panel-title">Existing Travels</h3>
+       </div>
+       <ul class="list-group">
+           <a class="list-group-item" ng-repeat="travel in $ctrl.travels">
+               <p> From {{travel.arrival}} to {{travel.departure}} </p>
+           </a>
+       </ul>
+     </div>
+   </div>-->
+ </div>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
   <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
