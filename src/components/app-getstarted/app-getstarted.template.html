@@ -1,89 +1,117 @@
 <div class="full-background-image">
   <div class="main-login main-center">
-  	<form method="post" action="#">
 
-      <div class="form-group">
+      <div class="form-group" >
         <h2 class="cols-sm-2 control-label">Register</h2>
       </div>
 
-  		<div class="form-group">
-  			<label for="name" class="cols-sm-2 control-label">Your Name</label>
+      <form name="register" method="post" action="#" novalidate>
+  		<div class="form-group" ng-class="{ 'has-error': register.name.$touched && register.name.$invalid }">
+  			<label for="name" >Your Name</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-  					<input type="text" class="form-control" name="name" id="name" ng-model="$ctrl.signup.username"  placeholder="Enter your Name"/>
+  					<input type="text" class="form-control" name="name" id="name" ng-model="$ctrl.signup.username"  placeholder="Enter your Name" required/>
   				</div>
-  			</div>
-  		</div>
-
-  		<div class="form-group">
-  			<label for="email" class="cols-sm-2 control-label">Your Email</label>
-  			<div class="cols-sm-10">
-  				<div class="input-group">
-  					<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-  					<input type="text" class="form-control" name="email" id="email" ng-model="$ctrl.signup.email" placeholder="Enter your Email"/>
-  				</div>
-  			</div>
-  		</div>
-
-  		<div class="form-group">
-  			<label for="username" class="cols-sm-2 control-label">Username</label>
-  			<div class="cols-sm-10">
-  				<div class="input-group">
-  					<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-  					<input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.signup.loginid" placeholder="Enter your Username"/>
-  				</div>
-  			</div>
-  		</div>
-
-  		<div class="form-group">
-  			<label for="password" class="cols-sm-2 control-label">Password</label>
-  			<div class="cols-sm-10">
-  				<div class="input-group">
-  					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-  					<input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.signup.password" placeholder="Enter your Password"/>
-  				</div>
-  			</div>
-  		</div>
-
-  		<div class="form-group">
-  			<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-  			<div class="cols-sm-10">
-  				<div class="input-group">
-  					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-  					<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
-  				</div>
-  			</div>
-  		</div>
-
-    <div class="form-group">
-  			<label for="birth" class="cols-sm-2 control-label">Date of Birth</label>
-  			<div class="cols-sm-10">
-  				<div class="input-group">
-  					<span class="input-group-addon"><i class="fa fa-star fa" aria-hidden="true"></i></span>
-  					<input type="text" class="form-control" name="birth" id="birth" ng-model="$ctrl.signup.birthdate" placeholder="Date of Birth in DD.MM.YYYY"/>
-  				</div>
-  			</div>
-  		</div>
-
-    <div class="form-group">
-  			<label for="density" class="cols-sm-2 control-label">Density</label>
-  			<div class="cols-sm-10">
-  				<div class="input-group">
-  					<span class="input-group-addon"><i class="fa fa-calendar-check-o fa" aria-hidden="true"></i></span>
-          <input type="number" class="form-control" name="density" id="density" ng-model="$ctrl.signup.density"  placeholder="Amount of daily activities"/>
+          <div class="help-block" ng-messages="register.name.$error" ng-if="register.name.$touched">
+          <p ng-message="required"><b>Your name is required.</b></p>
         </div>
   			</div>
   		</div>
 
-  		<div class="form-group">
-  				<label for="currency" class="cols-sm-2 control-label">Currency</label>
+  		<div class="form-group" ng-class="{ 'has-error': register.email.$touched && register.email.$invalid }">
+  			<label for="email" >Your Email</label>
+  			<div class="cols-sm-10">
+  				<div class="input-group">
+  					<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+  					<input type="email" class="form-control" name="email" id="email" ng-model="$ctrl.signup.email" placeholder="Enter your Email" required/>
+  				</div>
+          <div class="help-block" ng-messages="register.email.$error" ng-if="register.email.$touched">
+          <p ng-message="required"><b>Your Email is required.</b></p>
+          <p ng-message="email"><b>Please enter a valid Email address.</b></p>
+        </div>
+  			</div>
+  		</div>
+
+  		<div class="form-group" ng-class="{ 'has-error': register.username.$touched && register.username.$invalid }">
+  			<label for="username">Username</label>
+  			<div class="cols-sm-10">
+  				<div class="input-group">
+  					<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+  					<input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.signup.loginid" placeholder="Enter your Username" required/>
+  				</div>
+          <div class="help-block" ng-messages="register.username.$error" ng-if="register.username.$touched">
+          <p ng-message="required"><b>Your Username is required.</b></p>
+        </div>
+  			</div>
+  		</div>
+
+  		<div class="form-group" ng-class="{ 'has-error': register.password.$touched && register.password.$invalid }">
+  			<label for="password">Password</label>
+  			<div class="cols-sm-10">
+  				<div class="input-group">
+  					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+  					<input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.signup.password" placeholder="Enter your Password" ng-minlength="8" ng-maxlength="12"required/>
+  				</div>
+          <div class="help-block" ng-messages="register.password.$error" ng-if="register.password.$touched">
+          <p ng-message="required"><b>Your Password is required.</b></p>
+          <p ng-show="register.password.$error.minlength"><b>Password is too short.</b></p>
+          <p ng-show="register.password.$error.maxlength"><b>Password is too loong.</b></p>
+        </div>
+  			</div>
+  		</div>
+
+  		<div class="form-group" ng-class="{ 'has-error': register.confirm.$touched && register.confirm.$invalid }">
+  			<label for="confirm" >Confirm Password</label>
+  			<div class="cols-sm-10">
+  				<div class="input-group">
+  					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+  					<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-pattern="{{$ctrl.signup.password}}"required/>
+  				</div>
+          <div class="help-block" ng-messages="register.confirm.$error" ng-if="register.confirm.$touched" ng-if="register.confirm.$invalid">
+          <p ng-message="required"><b>Your Password is required.</b></p>
+          <p ng-message="pattern">Not equal!!!</b></p>
+        </div>
+  			</div>
+  		</div>
+
+    <div class="form-group" ng-class="{ 'has-error': register.birth.$touched && register.birth.$invalid }">
+  			<label for="birth">Date of Birth</label>
+  			<div class="cols-sm-10">
+  				<div class="input-group">
+  					<span class="input-group-addon"><i class="fa fa-star fa" aria-hidden="true"></i></span>
+  					<input type="date" class="form-control" name="birth" id="birth" ng-model="$ctrl.signup.birthdate" placeholder="Date of Birth in DD.MM.YYYY" required/>
+  				</div>
+          <div class="help-block" ng-messages="register.birth.$error" ng-if="register.birth.$touched">
+          <p ng-message="required"><b>Your Date of Birth is required.</b></p>
+        </div>
+  			</div>
+  		</div>
+
+    <div class="form-group" ng-class="{ 'has-error': register.density.$touched && register.density.$invalid }">
+  			<label for="density">Density</label>
+  			<div class="cols-sm-10">
+  				<div class="input-group">
+  					<span class="input-group-addon"><i class="fa fa-calendar-check-o fa" aria-hidden="true"></i></span>
+          <input type="number" class="form-control" name="density" id="density" ng-model="$ctrl.signup.density"  placeholder="Amount of daily activities" required/>
+        </div>
+        <div class="help-block" ng-messages="register.desity.$error" ng-if="register.density.$touched">
+        <p ng-message="required"><b>Your Density is required.</b></p>
+      </div>
+  			</div>
+  		</div>
+
+  		<div class="form-group" ng-class="{ 'has-error': register.currency.$touched && register.currency.$invalid }">
+  				<label for="currency" >Currency</label>
   				<div class="cols-sm-10">
   					<div class="input-group">
   						<span class="input-group-addon"><i class="fa fa-dollar fa" aria-hidden="true"></i></span>
-  						<input type="text" class="form-control" name="currency" id="currency" ng-model="$ctrl.signup.currency"  placeholder="Preferred Currency"/>
+  						<input type="text" class="form-control" name="currency" id="currency" ng-model="$ctrl.signup.currency"  placeholder="Preferred Currency" required/>
 
   					</div>
+            <div class="help-block" ng-messages="register.currency.$error" ng-if="register.currency.$touched">
+            <p ng-message="required"><b>Your Currency is required.</b></p>
+          </div>
   				</div>
   			</div>
 

@@ -53,7 +53,7 @@ class LoginPageComponentController
             if(e.status === 401) {
               this.errormessage = "Login failed. Wrong username or password";
             } else {
-              this.errormessage = "Unknown sever error."
+              this.errormessage = "Unknown sever error.";
             }
           });
     }

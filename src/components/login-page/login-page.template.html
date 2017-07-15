@@ -4,14 +4,14 @@
 		<div class="form-group">
 <h3 class="cols-sm-2 control-label">Enter your Account details</h3>
 </div>
-	<form name="userForm" novalidate>
-		<div class="form-group" ng-class="{ 'has-error': userForm.name.$touched && userForm.name.$invalid }">
-			<label for="password">Username</label>
+	<form name="userForm" method="post" action="#" novalidate>
+		<div class="form-group" ng-class="{ 'has-error': userForm.username.$touched && userForm.username.$invalid }">
+			<label for="username">Username</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-				<input type="text" name="name" class="form-control" ng-model="$ctrl.login.username" placeholder="Enter your Username" required>
+				<input type="text" name="username" class="form-control" ng-model="$ctrl.login.username" placeholder="Enter your Username" required>
 			</div>
-			<div class="help-block" ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+			<div class="help-block" ng-messages="userForm.username.$error" ng-if="userForm.username.$touched">
 			<p ng-message="required"><b>Your name is required.</b></p>
 		</div>
 	</div>
