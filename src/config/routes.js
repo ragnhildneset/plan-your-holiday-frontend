@@ -91,5 +91,5 @@ export default function config ($stateProvider, $urlRouterProvider){
             component: EditUserComponent.name
         });
 
-         
+
 }

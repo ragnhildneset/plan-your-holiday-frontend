@@ -30,6 +30,14 @@ class CategorySelectionComponentController {
         this.UserService = UserService;
         this.TravelService = TravelService;
         this.mustsees = [];
+
+        // asynchronous setup
+        this.density = 3; // mocked value
+        if(this.UserService.isAuthenticated()) {
+          this.UserService.getPreferences(this.UserService.getCurrentUser().loginid).then(data => {
+            this.density = data.density;
+          })
+        }
     }
 
     // simulates a click on a certain box and adds/removes it to/from the list of selected Must-Sees
@@ -55,11 +63,6 @@ class CategorySelectionComponentController {
 
     calculate() {
       // Set up required data
-      this.density = 3; // mocked value
-      if(this.UserService.isAuthenticated()) {
-        console.log("User " + this.UserService.getCurrentUser().username + " is currently logged in");
-        this.density = this.UserService.getCurrentUser().density;
-      }
 
       var arrival = new Date(JSON.parse(this.$window.localStorage['journey']).arrival);
       var departure = new Date(JSON.parse(this.$window.localStorage['journey']).departure);
@@ -100,6 +103,7 @@ class CategorySelectionComponentController {
           default: this.attractionWeight[0] = this.attractionWeight[0] + 1; break;
         }
       }
+
 
       // Within these arrays all the relevant attractions for the schedule are stored
       this.monuments = [];
@@ -149,6 +153,7 @@ class CategorySelectionComponentController {
       // create a travel-object
       var schedule = [];
       var current = 0;
+      console.log("calculating for " + this.duration + " days and density " + this.density);
       // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
         var last = null;
@@ -179,7 +184,7 @@ class CategorySelectionComponentController {
 
       var username = "johndoe" + Math.random();
       if(this.UserService.isAuthenticated()) {
-        username = this.UserService.getCurrentUser().username;
+        username = this.UserService.getCurrentUser().loginid;
       }
 
       var travel = {
@@ -189,13 +194,8 @@ class CategorySelectionComponentController {
           'schedule': schedule
         };
 
-      // very dirty workaround!
-      // TODO fix this
       this.TravelService.create(travel).then(data => {
-        this.TravelService.getbyUser(username).then(data => {
-          console.log(data._id);
-          this.$state.go('travel',{ travelID: data._id});
-        });
+        this.$state.go('travel', { travelID: data });
       });
     }
 
