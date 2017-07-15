@@ -21,8 +21,54 @@ class EditUserComponentController{
         this.$state = $state;
         this.UserService = UserService;
 
-        this.username = this.UserService.getCurrentUser().username;
-        console.log(this.username);
+        this.UserService.getPreferences(this.UserService.getCurrentUser().loginid).then(data => {
+          this.username = data.username;
+          this.loginID = data.loginid;
+          this.email = data.email;
+
+          var bd = new Date(data.birthday);
+          this.birthday = bd.getDay() + "." + bd.getMonth() + "." + bd.getFullYear();
+
+          this.density = data.density;
+          this.phonenumber = data.phonenumber;
+          if(this.phonenumber == 0) {
+            this.phonenumber = "";
+          }
+        });
+    }
+
+    savedata() {
+      this.phonenumber = parseInt(document.getElementById("phone").value);
+      this.email = document.getElementById("mail").value;
+      this.density = parseInt(document.getElementById("density").value);
+
+      var user = {"_id": this.UserService.getCurrentUser()._id,
+        "username": this.username,
+        "loginid": this.loginID,
+        "email": this.email,
+        "birthday": new Date(this.birthday),
+        "density": this.density,
+        "phonenumber": this.phonenumber
+      }
+
+      this.UserService.setPreferences(this.UserService.getCurrentUser()._id, user);
+    }
+
+    logout() {
+      this.UserService.logout();
+      this.$state.go('home');
+    }
+
+    attemptdelete() {
+      document.getElementById("delete").style="display:inline";
+    }
+
+    deleteUser() {
+      var id = this.UserService.getCurrentUser()._id;
+      this.UserService.logout();
+      this.UserService.deleteUser(id).then(data => {
+        this.$state.go('home');
+      })
     }
 
     static get $inject(){

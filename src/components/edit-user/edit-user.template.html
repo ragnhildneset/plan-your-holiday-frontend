@@ -1,10 +1,76 @@
-<div class="full-background-image">
-  <header class="jumbotron">
-     <div class="inner cover">
-        <h1 class="cover-heading">{{$ctrl.username}}</h1>
-        <p class="lead">
-          Site under construction...
-        </p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <div class="full-background-image">
+    <header class="jumbotron">
+       <div class="inner cover">
+          <h1 class="cover-heading">{{$ctrl.username}}</h1>
+          <p class="lead">
+            Site under construction...
+          </p>
+        </div>
+     </header>
+
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{$ctrl.username}}</h3>
+            <a data-original-title="Save all Data" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" ng-click="$ctrl.logout()"><i class="glyphicon glyphicon-log-out"></i></a>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="box-icon">
+                  <span class="fa fa-5x fa-user"></span>
+              </div>
+              <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>LoginID:</td>
+                    <td>{{$ctrl.loginID}}</td>
+                  </tr>
+                  <tr>
+                    <td>Date of Birth</td>
+                    <td>{{$ctrl.birthday}}></td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td><input type="text" id="mail" value={{$ctrl.email}}></input> </td>
+                  </tr>
+                  <tr>
+                    <td>Phone Number</td>
+                    <td><input type="text" id="phone" value={{$ctrl.phonenumber}}> </input></td>
+                  </tr>
+                  <tr>
+                    <td>Density</td>
+                    <td><input type="text" id="density" value={{$ctrl.density}}></input></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+              <a data-original-title="Save all Data" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="$ctrl.savedata()"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+              <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" ng-click="$ctrl.attemptdelete()"><i class="glyphicon glyphicon-remove"></i></a>
+              <div id="delete" style="display:none">
+                <a data-original-title="Destroy this user permamently" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" visible="false" ng-click="$ctrl.deleteUser()">Ultimatly delete this Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-   </header>
-</div>
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>
+  <script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+</html>
