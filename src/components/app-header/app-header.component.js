@@ -24,7 +24,17 @@ class AppHeaderComponentController{
     }
 
     home () {
-      this.$state.go('home');
+      console.log("Home clicked",this.UserService.getCurrentUser()._id);
+      if(this.UserService.getCurrentUser()._id=!null)
+        {
+        console.log("Logged User");
+        this.$state.go('enter-journey');
+      }
+      else{
+        console.log("Not User");
+        this.$state.go('home');
+      }
+      
     };
 
     partners () {

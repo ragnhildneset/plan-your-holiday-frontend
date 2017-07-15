@@ -186,7 +186,7 @@ class CategorySelectionComponentController {
 
       var username = "johndoe" + Math.random();
       if(this.UserService.isAuthenticated()) {
-        username = this.UserService.getCurrentUser().loginid;
+        username = this.UserService.getCurrentUser().username;
       }
 
       var travel = {
