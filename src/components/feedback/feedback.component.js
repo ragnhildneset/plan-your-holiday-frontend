@@ -47,7 +47,9 @@ class FeedbackComponentController{
 
         ratings.push(attraction);
       }
-      this.AttractionsService.rate(ratings, 3)
+      this.AttractionsService.rate(ratings).then(()=> {
+          this.$state.go('home');
+        })
     }
 }
 

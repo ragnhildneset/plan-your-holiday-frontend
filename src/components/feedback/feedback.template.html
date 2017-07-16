@@ -1,8 +1,8 @@
 <div class="full-background-image">
   <header class="jumbotron">
      <div class="inner cover">
-        <h1 class="cover-heading">Welcome</h1>
-        <p class="lead">Where will you go next?</p>
+        <h1 class="cover-heading">Rate!</h1>
+        <p class="lead">We appreciate your opinion.</p>
       </div>
   </header>
     <form name="form" ng-submit="$ctrl.rate()" role="form">
@@ -15,12 +15,12 @@
                <br/>
                <h5><b>Quality</b></h5>
                <p>How well did you like the activity?</p>
-               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].quality" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating"></span>
+               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].quality" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating" required></span>
                <br/>
                <br/>
                <h5><b>Popularity</b></h5>
                 <p>How popular is this activity among tourists?</p>
-               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].popularity" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating"></span>
+               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].popularity" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating" required></span>
                <br/>
              </div>
           </div>
@@ -28,7 +28,7 @@
     </div>
     </div>
     <div class="form-actions">
-        <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary btn-lg btn-block btn-darkblue">Rate</button>
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary btn-lg btn-block btn-darkblue">Rate</button>
     </div>
   </form>
 
