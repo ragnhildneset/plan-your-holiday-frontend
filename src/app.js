@@ -30,12 +30,9 @@ import LoginPage from './components/login-page/login-page';
 import Partners from './components/partners/partners';
 import AboutPage from './components/about-page/about-page';
 import CategorySelection from './components/category-selection/category-selection';
-<<<<<<< HEAD
 import Feedback from './components/feedback/feedback';
-=======
 import enterJourney from './components/enter-journey/enter-journey';
 import EditUser from './components/edit-user/edit-user';
->>>>>>> master
 
 
 let app = angular.module('app', [
@@ -59,12 +56,9 @@ let app = angular.module('app', [
     AboutPage.name,
     CategorySelection.name,
     CityService.name,
-<<<<<<< HEAD
-    Feedback.name
-=======
+    Feedback.name,
     enterJourney.name,
     EditUser.name
->>>>>>> master
 ]);
 
 app.constant('API_URL', 'http://localhost:9000/api');

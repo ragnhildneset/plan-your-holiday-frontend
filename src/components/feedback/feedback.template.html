@@ -7,19 +7,19 @@
   </header>
     <div class="white-background">
       <div class="rating-card-container">
-        <div ng-repeat="activity in $ctrl.travel[0].schedule">
+        <div ng-repeat="activity in $ctrl.travel.schedule">
           <div class="card">
              <div class="container">
                <h2 class="card-title">{{ activity.attractionName }}</h2>
                <br/>
                <h5><b>Quality</b></h5>
                <p>How well did you like the activity?</p>
-               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].quality" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating"></span>
+               <span uib-rating ng-model="$ctrl.rating[activity._id].quality" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating"></span>
                <br/>
                <br/>
                <h5><b>Popularity</b></h5>
                 <p>How popular is this activity among tourists?</p>
-               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].popularity" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating"></span>
+               <span uib-rating ng-model="$ctrl.rating[activity._id].popularity" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating"></span>
                <br/>
              </div>
           </div>

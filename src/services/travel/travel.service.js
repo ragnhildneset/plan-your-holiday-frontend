@@ -28,6 +28,7 @@ export default class TravelService {
     }
 
     get(id) {
+      console.log(id)
         let url = this.resourceUrl + '/getTravel/' + id;
         return this.$http.get(url).then(response => {
             return new Promise((resolve, reject) => {

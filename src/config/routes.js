@@ -33,7 +33,7 @@ function resolveTravels(TravelService){
 
 resolveTravel.$inject = ['$stateParams', TravelService.name];
 function resolveTravel($stateParams, TravelService){
-    return TravelService.list($stateParams.travelId);
+    return TravelService.get($stateParams.travelId);
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
