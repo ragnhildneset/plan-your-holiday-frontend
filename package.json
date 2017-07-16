@@ -41,7 +41,7 @@
     "angular-bootstrap-datetimepicker": "^1.1.4",
     "angular-material": "^1.1.0",
     "angular-material-icons": "^0.7.1",
-    "angular-messages": "^1.5.8",
+    "angular-messages": "^1.6.5",
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap-slider": "^9.8.0",
     "chart.js": "^2.6.0"

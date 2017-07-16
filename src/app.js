@@ -10,6 +10,7 @@ import bootstrap from 'angular-ui-bootstrap';
 import ngMdIcons from 'angular-material-icons';
 import animate from 'angular-animate';
 import datetimepicker from 'angular-bootstrap-datetimepicker';
+import NgMessages from 'angular-messages';
 
 import UserService from './services/users/user';
 import AttractionsService from './services/attractions/attractions';
@@ -39,6 +40,7 @@ let app = angular.module('app', [
     angularMaterial,
     animate,
     datetimepicker,
+    NgMessages,
     AppContent.name,
     EnterJourney.name,
     ViewAttractions.name,
