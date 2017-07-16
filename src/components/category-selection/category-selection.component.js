@@ -74,6 +74,20 @@ class CategorySelectionComponentController {
       if(diffDays > 2) {
         this.duration = diffDays-2;
       }
+      else {
+        var username = this.UserService.getCurrentUser().loginid;
+
+        var travel = {
+            'username': username,
+            'destination': JSON.parse(this.$window.localStorage['journey']).cityId,
+            'arrival': arrival,
+            'departure': departure
+          };
+
+        this.TravelService.create(travel).then(data => {
+          this.$state.go('travel', { travelID: data });
+        });
+      }
 
       var requiredAttractions = this.duration * this.density;
 
