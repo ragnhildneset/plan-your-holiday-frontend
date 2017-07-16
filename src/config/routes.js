@@ -91,9 +91,5 @@ export default function config ($stateProvider, $urlRouterProvider){
             component: EditUserComponent.name
         });
 
-            /*SB: This segment removes the # from the URL
-            $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-        });*/
+
 }

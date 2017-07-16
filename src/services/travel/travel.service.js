@@ -37,7 +37,16 @@ export default class TravelService {
     }
 
     getbyUser(username) {
-        let url = this.resourceUrl + '/getTravelByUser/' + username;
+        let url = this.resourceUrl + '/getTravels/' + username;
+        return this.$http.get(url).then(response => {
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+        })
+    }
+
+    getLatest(username) {
+        let url = this.resourceUrl + '/getLatest/' + username;
         return this.$http.get(url).then(response => {
             return new Promise((resolve, reject) => {
                 resolve(response.data);

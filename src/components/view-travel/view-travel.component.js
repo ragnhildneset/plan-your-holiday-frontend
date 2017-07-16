@@ -23,6 +23,8 @@ class ViewTravelComponentController{
         this.$state = $state;
         this.TravelService = TravelService;
         this.UserService = UserService;
+
+        console.log(this.travel);
     }
 
     static get $inject(){

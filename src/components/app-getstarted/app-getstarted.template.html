@@ -5,6 +5,7 @@
         <h2 class="cols-sm-2 control-label">Register</h2>
       </div>
 
+
       <form name="register" method="post" action="#" novalidate>
   		<div class="form-group" ng-class2="{'has-success has-feedback': register.name.$valid}" ng-class="{ 'has-error': register.name.$touched && register.name.$invalid, 'has-success has-feedback': register.name.$valid } ">
   			<label for="name" >First and Last Name</label>
@@ -32,6 +33,7 @@
         </div>
   			</div>
   		</div>
+
 
   		<div class="form-group" ng-class="{ 'has-error': register.username.$touched && register.username.$invalid , 'has-success has-feedback': register.username.$valid }">
   			<label for="username">Login ID</label>
@@ -102,10 +104,12 @@
   		</div>
 
   		<div class="form-group ">
+
   			<button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-disabled="register.$invalid" ng-click="$ctrl.signup()">Submit</button>
+
   		</div>
   		<div class="login-register">
-  			<p> <small> Already got an account? </small></p>
+  			<p>  <font color = "white" size="1"> Already got an account? </font></small></p>
         <a ng-click="$ctrl.login()">Login</a>
       </div>
   	</form>

@@ -1,14 +1,35 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
    <ul class="nav navbar-nav navbar-right">
-      <li><a ng-click="$ctrl.home()">Home</a></li>
+      <!-- DEVELOPMENT SHORTCUTS
       <li><a ng-click="$ctrl.selectCategories()">DEV Categories</a></li>
-      <li><a ng-click="$ctrl.showTravel()">DEV Travel</a></li>
-      <li><a ng-click="$ctrl.enterJourney()">DEV Enter Journey</a></li>
+      <li><a ng-click="$ctrl.enterJourney()">DEV Enter Journey</a></li> -->
+
+
+      <li><a ng-click="$ctrl.home()">Home</a></li>
       <li><a ng-click="$ctrl.partners()">Partners</a></li>
       <li><a ng-click="$ctrl.about()">About</a></li>
-      <li ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login()"><a> Login </a></li>
+
+      <!-- DESIGN OPTION 1: Navbar Buttons -->
+      <li ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login()"><a>Login</a></li>
       <li ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.editUser()"><a>{{$ctrl.getCurrentUser()}}</a></li>
+      <li ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.logout()"><a>Logout</a></li>
+
+      <!--- DESIGN OPTION 2: Dropdown Menu
+      <li ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login()"><a>Login</a></li>
+      <li ng-if="$ctrl.isAuthenticated()">
+        <div class="dropdown">
+          {{$ctrl.getCurrentUser()}}
+          <div class="dropdown-content">
+            <ul>
+              <li><a ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.editUser()">Edit Userpage</a></li>
+              <li><a ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.logout()">Logout</a></li>
+              <li class="divider"></li>
+              <li ng-if="$ctrl.hasLatestTravel()">Latest Travel</li>
+            </ul>
+          </div>
+        </div>
+      </li> -->
     </ul>
  </div>
 </nav>

@@ -3,6 +3,7 @@
 
 import template from './edit-user.template.html';
 import UserService from './../../services/users/user.service';
+import TravelService from './../../services/travel/travel.service';
 
 
 class EditUserComponent {
@@ -17,17 +18,17 @@ class EditUserComponent {
 }
 
 class EditUserComponentController{
-    constructor($state, UserService){
+    constructor($state, UserService, TravelService){
         this.$state = $state;
         this.UserService = UserService;
+        this.TravelService = TravelService;
 
         this.UserService.getPreferences(this.UserService.getCurrentUser().loginid).then(data => {
           this.username = data.username;
           this.loginID = data.loginid;
-          this.email = data.email;
 
-          var bd = new Date(data.birthday);
-          this.birthday = bd.getDay() + "." + bd.getMonth() + "." + bd.getFullYear();
+          this.email = data.email;
+          this.birthday = data.birthday;
 
           this.density = data.density;
           this.phonenumber = data.phonenumber;
@@ -35,6 +36,15 @@ class EditUserComponentController{
             this.phonenumber = "";
           }
         });
+        document.getElementById("confirmation").style.visibility = "hidden";
+
+        let self = this;
+        this.travels = this.TravelService.getbyUser(this.UserService.getCurrentUser().loginid).then(data => {
+          self.travels = data;
+          console.log(this.travels);
+        });
+        console.log(self.travels);
+        console.log(this.travels);
     }
 
     savedata() {
@@ -46,12 +56,13 @@ class EditUserComponentController{
         "username": this.username,
         "loginid": this.loginID,
         "email": this.email,
-        "birthday": new Date(this.birthday),
+        "birthday": this.birthday,
         "density": this.density,
         "phonenumber": this.phonenumber
       }
 
       this.UserService.setPreferences(this.UserService.getCurrentUser()._id, user);
+      document.getElementById("confirmation").style.visibility = "visible";
     }
 
     logout() {
@@ -71,8 +82,12 @@ class EditUserComponentController{
       })
     }
 
+    viewTravel(travel) {
+      this.$state.go('travel', { travelID: travel._id });
+    }
+
     static get $inject(){
-        return ['$state', UserService.name];
+        return ['$state', UserService.name, TravelService.name];
     }
 }
 

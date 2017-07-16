@@ -30,9 +30,9 @@ export default class UserService {
         });
     }
 
-    login(user, pass) {
+    login(loginid, pass) {
         return this.$http.post(`${ this.API_URL }/user/login`, {
-            username: user,
+            loginid: loginid,
             password: pass
         });
     }
