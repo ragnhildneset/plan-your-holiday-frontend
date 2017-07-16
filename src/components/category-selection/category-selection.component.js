@@ -71,8 +71,8 @@ class CategorySelectionComponentController {
       var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
       this.duration = 4;
-      if(diffDays > 0) {
-        this.duration = diffDays;
+      if(diffDays > 2) {
+        this.duration = diffDays-2;
       }
 
       var requiredAttractions = this.duration * this.density;
@@ -126,41 +126,41 @@ class CategorySelectionComponentController {
         }
       }
       // the pool is a copy of the attractions with the already selected must-sees removed
-      this.pool = this.attractions.slice(0);
+      this.pool = this.attractions.slice();
       this.removeAlreadySelected();
+      this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
 
       // adding the best attractions of each category to the fields until they required amount is reached
-      while(this.monuments.length < this.attractionWeight[0]) {
-        this.monuments.push(this.pool[this.getBestOfCategory("Monuments")]);
+      while(this.getNumberOf("Monuments")<this.attractionWeight[0] && this.selection.length<(this.duration*this.density)) {
+        this.selection.push(this.pool[this.getBestOfCategory("Monuments")]);
         this.pool.splice(this.getBestOfCategory("Monuments"), 1);
       }
-      while(this.museums.length < this.attractionWeight[1]) {
-        this.museums.push(this.pool[this.getBestOfCategory("Museums")]);
+      while(this.getNumberOf("Museums")<this.attractionWeight[1] && this.selection.length<(this.duration*this.density)) {
+        this.selection.push(this.pool[this.getBestOfCategory("Museums")]);
         this.pool.splice(this.getBestOfCategory("Museums"), 1);
       }
-      while(this.parks.length < this.attractionWeight[2]) {
-        this.parks.push(this.pool[this.getBestOfCategory("Parks")]);
+      while(this.getNumberOf("Parks")<this.attractionWeight[2] && this.selection.length<(this.duration*this.density)) {
+        this.selection.push(this.pool[this.getBestOfCategory("Parks")]);
         this.pool.splice(this.getBestOfCategory("Parks"), 1);
       }
-      while(this.churches.length < this.attractionWeight[3]) {
-        this.churches.push(this.pool[this.getBestOfCategory("Churches")]);
+      while(this.getNumberOf("Churches")<this.attractionWeight[3] && this.selection.length<(this.duration*this.density)) {
+        this.selection.push(this.pool[this.getBestOfCategory("Churches")]);
         this.pool.splice(this.getBestOfCategory("Churches"), 1);
       }
 
-      // The Selection is the full set of selected attractions for the schedule
-      this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
+      this.shuffleSelection(this.selection.length);
 
       // create a travel-object
       var schedule = [];
       var current = 0;
-      console.log("calculating for " + this.duration + " days and density " + this.density);
+      //console.log("calculating for " + this.duration + " days and density " + this.density);
       // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
         var last = null;
         for(var j = 0; j < this.density; j++) {
           var start = 0;
           if(last == null) {
-            start = new Date(arrival);
+            start = new Date(arrival.getDate() + 1);
             start.setDate(arrival.getDate() + parseInt(i));
           }
           else {
@@ -186,9 +186,10 @@ class CategorySelectionComponentController {
 
       var username = "johndoe" + Math.random();
       if(this.UserService.isAuthenticated()) {
-        username = this.UserService.getCurrentUser().username;
+        username = this.UserService.getCurrentUser().loginid;
       }
 
+      console.log("cityID: " + JSON.parse(this.$window.localStorage['journey']).cityId);
       var travel = {
           'username': username,
           'destination': JSON.parse(this.$window.localStorage['journey']).cityId,
@@ -205,17 +206,12 @@ class CategorySelectionComponentController {
     removeAlreadySelected() {
       var all = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
       for(var i = 0; i < all.length; i++) {
-        this.pool.splice(this.indexOfDuplicate(all[i]), 1);
-      }
-    }
-
-    indexOfDuplicate(index) {
-      for(var i = 0; i < this.mustsees.length; i++) {
-        if(this.mustsees[i] == index) {
-          return i;
+        for(var j = 0; j < this.pool.length; j++) {
+          if(all[i]._id == this.pool[j]._id) {
+            this.pool.splice(i, 1);
+          }
         }
       }
-      return -1;
     }
 
     getBestOfCategory(category) {
@@ -225,6 +221,33 @@ class CategorySelectionComponentController {
         }
       }
       return -1;
+    }
+
+    shuffleSelection(n) {
+      if(this.selection.length > 1) {
+        for(var i = 0; i < n; i++){
+          var x = Math.floor((Math.random() * this.selection.length));
+          var y = 0;
+          do {
+            y = Math.floor((Math.random() * this.selection.length));
+          }
+          while(x == y)
+
+          var s = this.selection[x];
+          this.selection[x] = this.selection[y];
+          this.selection[y] = s;
+        }
+      }
+    }
+
+    getNumberOf(category) {
+      var n = 0;
+      for(var i = 0; i < this.selection.length; i++){
+        if(this.selection[i].category.localeCompare(category)) {
+          n = n + 1;
+        }
+      }
+      return n;
     }
 
     printPool() {

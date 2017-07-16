@@ -28,7 +28,9 @@ class EditUserComponentController{
           this.loginID = data.loginid;
 
           this.email = data.email;
-          this.birthday = data.birthday;
+          this.birthday = new Date(data.birthday);
+          console.log(this.birthday);
+          this.birthday = "" + this.birthday.getDate() + "." + (this.birthday.getMonth()+1) + "." + this.birthday.getFullYear();
 
           this.density = data.density;
           this.phonenumber = data.phonenumber;
@@ -41,10 +43,7 @@ class EditUserComponentController{
         let self = this;
         this.travels = this.TravelService.getbyUser(this.UserService.getCurrentUser().loginid).then(data => {
           self.travels = data;
-          console.log(this.travels);
         });
-        console.log(self.travels);
-        console.log(this.travels);
     }
 
     savedata() {
