@@ -6,20 +6,20 @@
       </div>
 
       <form name="register" method="post" action="#" novalidate>
-  		<div class="form-group" ng-class="{ 'has-error': register.name.$touched && register.name.$invalid }">
+  		<div class="form-group" ng-class2="{'has-success has-feedback': register.name.$valid}" ng-class="{ 'has-error': register.name.$touched && register.name.$invalid, 'has-success has-feedback': register.name.$valid } ">
   			<label for="name" >Your Name</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-  					<input type="text" class="form-control" name="name" id="name" ng-model="$ctrl.signup.username"  placeholder="Enter your Name" required/>
-  				</div>
+  					<input type="text" class="form-control" name="name" id="name" aria-describedby="name" ng-model="$ctrl.signup.username"  placeholder="Enter your Name" required/>
+          </div>
           <div class="help-block" ng-messages="register.name.$error" ng-if="register.name.$touched">
           <p ng-message="required"><b>Your name is required.</b></p>
         </div>
   			</div>
   		</div>
 
-  		<div class="form-group" ng-class="{ 'has-error': register.email.$touched && register.email.$invalid }">
+  		<div class="form-group" ng-class="{ 'has-error': register.email.$touched && register.email.$invalid , 'has-success has-feedback': register.email.$valid }">
   			<label for="email" >Your Email</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
@@ -33,7 +33,7 @@
   			</div>
   		</div>
 
-  		<div class="form-group" ng-class="{ 'has-error': register.username.$touched && register.username.$invalid }">
+  		<div class="form-group" ng-class="{ 'has-error': register.username.$touched && register.username.$invalid , 'has-success has-feedback': register.username.$valid }">
   			<label for="username">Username</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
@@ -46,7 +46,7 @@
   			</div>
   		</div>
 
-  		<div class="form-group" ng-class="{ 'has-error': register.password.$touched && register.password.$invalid }">
+  		<div class="form-group" ng-class="{ 'has-error': register.password.$touched && register.password.$invalid , 'has-success has-feedback': register.password.$valid  }">
   			<label for="password">Password</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
@@ -61,21 +61,21 @@
   			</div>
   		</div>
 
-  		<div class="form-group" ng-class="{ 'has-error': register.confirm.$touched && register.confirm.$invalid }">
+  		<div class="form-group" ng-class="{ 'has-error': register.confirm.$touched && register.confirm.$invalid , 'has-success has-feedback': register.confirm.$valid  }">
   			<label for="confirm" >Confirm Password</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-  					<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-pattern="{{$ctrl.signup.password}}"required/>
+  					<input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" ng-pattern="\b{{$ctrl.signup.password}}\b" ng-model="confirm" required/>
   				</div>
-          <div class="help-block" ng-messages="register.confirm.$error" ng-if="register.confirm.$touched" ng-if="register.confirm.$invalid">
+          <div class="help-block" ng-messages="register.confirm.$error" ng-if="register.confirm.$touched">
           <p ng-message="required"><b>Your Password is required.</b></p>
-          <p ng-message="pattern">Not equal!!!</b></p>
+          <p ng-message="pattern"><b>The password do not match</b></p>
         </div>
   			</div>
   		</div>
 
-    <div class="form-group" ng-class="{ 'has-error': register.birth.$touched && register.birth.$invalid }">
+    <div class="form-group" ng-class="{ 'has-error': register.birth.$touched && register.birth.$invalid, 'has-success has-feedback': register.birth.$valid  }">
   			<label for="birth">Date of Birth</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
@@ -88,35 +88,21 @@
   			</div>
   		</div>
 
-    <div class="form-group" ng-class="{ 'has-error': register.density.$touched && register.density.$invalid }">
+    <div class="form-group" ng-class="{ 'has-error': register.density.$touched && register.density.$invalid , 'has-success has-feedback': register.density.$valid  }">
   			<label for="density">Density</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="fa fa-calendar-check-o fa" aria-hidden="true"></i></span>
           <input type="number" class="form-control" name="density" id="density" ng-model="$ctrl.signup.density"  placeholder="Amount of daily activities" required/>
         </div>
-        <div class="help-block" ng-messages="register.desity.$error" ng-if="register.density.$touched">
+        <div class="help-block" ng-messages="register.density.$error" ng-if="register.density.$touched">
         <p ng-message="required"><b>Your Density is required.</b></p>
       </div>
   			</div>
   		</div>
 
-  		<div class="form-group" ng-class="{ 'has-error': register.currency.$touched && register.currency.$invalid }">
-  				<label for="currency" >Currency</label>
-  				<div class="cols-sm-10">
-  					<div class="input-group">
-  						<span class="input-group-addon"><i class="fa fa-dollar fa" aria-hidden="true"></i></span>
-  						<input type="text" class="form-control" name="currency" id="currency" ng-model="$ctrl.signup.currency"  placeholder="Preferred Currency" required/>
-
-  					</div>
-            <div class="help-block" ng-messages="register.currency.$error" ng-if="register.currency.$touched">
-            <p ng-message="required"><b>Your Currency is required.</b></p>
-          </div>
-  				</div>
-  			</div>
-
   		<div class="form-group ">
-  			<button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-click="$ctrl.signup(); $ctrl.enterJourney()">Register</button>
+  			<button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-disabled="register.$invalid" ng-click="$ctrl.signup(); $ctrl.enterJourney()">Register</button>
   		</div>
   		<div class="login-register">
   			<p> <small> Already got an account? </small></p>
