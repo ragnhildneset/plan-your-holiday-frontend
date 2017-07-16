@@ -42,12 +42,21 @@ class LoginPageComponentController
     {
 
         //SB: The variables this.login.username are inicialized in the inputfield @ the .html file
-        let user = this.login.username;
+        let loginid = this.login.loginid;
         let password = this.login.password;
 
-        this.UserService.login(user,password).then(()=> {
+
+        this.UserService.login(loginid,password).then(()=> {
+
             this.$state.go('enter-journey',{});
-        });
+          })
+          .catch((e)=> {
+            if(e.status === 401) {
+              this.errormessage = "Login failed. Wrong username or password";
+            } else {
+              this.errormessage = "Unknown sever error.";
+            }
+          });
     }
 
     getStarted () {

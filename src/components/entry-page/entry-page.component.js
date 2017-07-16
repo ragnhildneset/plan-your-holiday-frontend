@@ -1,7 +1,9 @@
 
 'use strict';
 
+import UserService from './../../services/users/user.service';
 import template from './entry-page.template.html';
+import './entry-page.style.css';
 
 
 
@@ -27,10 +29,10 @@ class EntryPageComponentController{
     }
 
     submit() {
-        let user = this.login.username;
+        let loginid = this.login.loginid;
         let password = this.login.password;
 
-        this.UserService.login(user,password).then(()=> {
+        this.UserService.login(loginid,password).then(()=> {
             this.$state.go('enter-journey',{});
         });
     }

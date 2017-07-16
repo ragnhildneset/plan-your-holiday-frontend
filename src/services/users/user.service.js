@@ -12,8 +12,7 @@ export default class UserService {
         this.$http = $http;
         this.$window = $window;
         this.API_URL = API_URL;
-
-
+        this.resourceUrl = `${ API_URL }/user/`;
     }
 
     static get name(){
@@ -21,21 +20,19 @@ export default class UserService {
     }
 
     register(username, email, loginid, password, birthdate, density) {
-
-
         return this.$http.post(`${ this.API_URL }/user/signup`, {
-        username : username,
-        loginid : loginid,
-        password : password,
-        email : email,
-        birthday : birthdate,
-        density : density
+          username : username,
+          loginid : loginid,
+          password : password,
+          email : email,
+          birthday : birthdate,
+          density : density
         });
     }
 
-    login(user, pass) {
+    login(loginid, pass) {
         return this.$http.post(`${ this.API_URL }/user/login`, {
-            username: user,
+            loginid: loginid,
             password: pass
         });
     }
@@ -53,9 +50,28 @@ export default class UserService {
         return JSON.parse(this.$window.atob(base64)).user;
     }
 
+    getPreferences(userid) {
+        let url = this.resourceUrl + "getPreferences/" + userid;
+        return this.$http.get(url).then(response => {
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+        });
+    }
+
+    setPreferences(id, body) {
+        return this.$http.put(this.resourceUrl + "setPreferences/" + id, body);
+    }
+
+    deleteUser(id) {
+        return this.$http.delete(this.resourceUrl + id).then(response => {
+            return new Promise((resolve, reject) => {
+                resolve(response.status);
+            });
+        });
+    }
+
     isAuthenticated() {
         return !!this.$window.localStorage['jwtToken'];
     }
-
-
 }

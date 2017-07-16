@@ -13,7 +13,6 @@ import CategorySelectionComponent from './../components/category-selection/categ
 import EnterJourneyComponent from './../components/enter-journey/enter-journey';
 import FeedbackComponent from './../components/feedback/feedback';
 
-
 import AttractionsService from './../services/attractions/attractions.service'
 import CityService from './../services/cities/city.service';
 
