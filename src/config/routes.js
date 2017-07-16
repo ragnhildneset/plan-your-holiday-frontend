@@ -31,7 +31,7 @@ function resolveCities(cityService){
     return cityService.list();
 }
 
-resolveTravel.$inject = [TravelService.name];
+resolveTravels.$inject = [TravelService.name];
 function resolveTravels(TravelService){
     return TravelService.list();
 }
