@@ -61,4 +61,13 @@ export default class AttractionsService {
             });
         });
     }
+
+    rate(ratings) {
+      let url = this.resourceUrl + 'rating/'
+      return this.$http.post(url, JSON.stringify(ratings)).then(responce => {
+          return new Promise((resolve, reject) => {
+              resolve(responce.data);
+          });
+      });
+    }
 }
