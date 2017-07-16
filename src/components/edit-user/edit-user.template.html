@@ -16,7 +16,7 @@
        <div class="inner cover">
           <h1 class="cover-heading">{{$ctrl.username}}</h1>
           <p class="lead">
-            Adapt your Userdata according to your current State.
+            Adapt your personal Data according to your current State.
           </p>
         </div>
      </header>
@@ -41,7 +41,7 @@
                   </tr>
                   <tr>
                     <td>Date of Birth</td>
-                    <td>{{$ctrl.birthday}}></td>
+                    <td>{{$ctrl.birthday}}</td>
                   </tr>
                   <tr>
                     <td>Email</td>
@@ -70,18 +70,19 @@
       </div>
     </div>
 
-    <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
      <div class="panel panel-info">
        <div class="panel-heading">
-         <h3 class="panel-title">Existing Travels</h3>
+         <h3 class="panel-title">Your Travels</h3>
        </div>
        <ul class="list-group">
            <a class="list-group-item" ng-repeat="travel in $ctrl.travels">
-               <p> From {{travel.arrival}} to {{travel.departure}} </p>
+               <!-- <p> <a ng-click="$ctrl.viewTravel(travel)"> From {{travel.arrival}} to {{travel.departure}} </a> </p> -->
+               <p class="travellink" ng-click="$ctrl.viewTravel(travel)"> {{travel.destination}} ({{travel.arrival}} to {{travel.departure}}) </p>
            </a>
        </ul>
      </div>
-   </div>-->
+   </div>
  </div>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"></script>

@@ -23,6 +23,21 @@ class AppHeaderComponentController{
         this.$state = $state;
         this.UserService = UserService;
         this.TravelService = TravelService;
+
+        let self = this;
+        this.latestTravel = null;
+        if(this.isAuthenticated()) {
+            this.TravelService.getLatest(this.UserService.getCurrentUser().loginid).then(data => {
+              self.latestTravel = data;
+            });
+        }
+    }
+
+    hasLatestTravel() {
+      if(this.latestTravel != null){
+        return true;
+      }
+      return false;
     }
 
     home () {

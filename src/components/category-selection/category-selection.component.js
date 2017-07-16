@@ -191,6 +191,7 @@ class CategorySelectionComponentController {
 
       var travel = {
           'username': username,
+          'destination': JSON.parse(this.$window.localStorage['journey']).cityId,
           'arrival': arrival,
           'departure': departure,
           'schedule': schedule
