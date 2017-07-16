@@ -12,6 +12,7 @@ import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
 import EnterJourneyComponent from './../components/enter-journey/enter-journey';
 import FeedbackComponent from './../components/feedback/feedback';
+import EditUserComponent from './../components/edit-user/edit-user';
 
 import AttractionsService from './../services/attractions/attractions.service'
 import CityService from './../services/cities/city.service';
@@ -38,7 +39,7 @@ function resolveTravels(TravelService){
 
 resolveTravel.$inject = ['$stateParams', TravelService.name];
 function resolveTravel($stateParams, TravelService){
-    return TravelService.get($stateParams.travelId);
+    return TravelService.get($stateParams.travelID);
 }
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -96,14 +97,18 @@ export default function config ($stateProvider, $urlRouterProvider){
             }
         })
         .state('travel', {
-            url: '/travel',
+            url: '/travel:travelID',
             component: TravelComponent.name,
             resolve: {
               travel : resolveTravel
             }
         })
+        .state('edit-user', {
+          url: '/preferences',
+          component: EditUserComponent.name
+        })
         .state('feedback', {
-            url: '/feedback:travelId',
+            url: '/feedback:travelID',
             component: FeedbackComponent.name,
             resolve: {
               travel : resolveTravel
