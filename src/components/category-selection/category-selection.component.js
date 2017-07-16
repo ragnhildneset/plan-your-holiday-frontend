@@ -241,6 +241,9 @@ class CategorySelectionComponentController {
     }
 
     getNumberOf(category) {
+      if(this.selection == null) {
+        return 0;
+      }
       if(this.selection.length == 0) {
         return 0;
       }
