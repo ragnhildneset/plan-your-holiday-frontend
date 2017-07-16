@@ -62,6 +62,10 @@ class ViewTravelComponentController{
     newtravel() {
       console.log(this.travel);
     }
+
+    rate() {
+      this.$state.go('feedback', {travelID: this.travel._id});
+    }
 }
 
 export default ViewTravelComponent;

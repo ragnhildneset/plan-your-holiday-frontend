@@ -11,6 +11,7 @@ import PartnersComponent from './../components/partners/partners';
 import AboutPageComponent from './../components/about-page/about-page';
 import CategorySelectionComponent from './../components/category-selection/category-selection';
 import EnterJourneyComponent from './../components/enter-journey/enter-journey';
+import FeedbackComponent from './../components/feedback/feedback';
 import EditUserComponent from './../components/edit-user/edit-user';
 
 import AttractionsService from './../services/attractions/attractions.service'
@@ -29,6 +30,11 @@ function resolveAttractionsDEV(attractionsService){
 resolveCities.$inject = [CityService.name];
 function resolveCities(cityService){
     return cityService.list();
+}
+
+resolveTravels.$inject = [TravelService.name];
+function resolveTravels(TravelService){
+    return TravelService.list();
 }
 
 resolveTravel.$inject = ['$stateParams', TravelService.name];
@@ -91,16 +97,27 @@ export default function config ($stateProvider, $urlRouterProvider){
             }
         })
         .state('travel', {
-            url: '/travel/:travelID',
+            url: '/travel:travelID',
             component: TravelComponent.name,
             resolve: {
               travel : resolveTravel
             }
         })
         .state('edit-user', {
-            url: '/preferences',
-            component: EditUserComponent.name
+          url: '/preferences',
+          component: EditUserComponent.name
+        })
+        .state('feedback', {
+            url: '/feedback:travelID',
+            component: FeedbackComponent.name,
+            resolve: {
+              travel : resolveTravel
+            }
         });
 
-
+            /*SB: This segment removes the # from the URL
+            $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+        });*/
 }
