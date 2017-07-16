@@ -241,6 +241,9 @@ class CategorySelectionComponentController {
     }
 
     getNumberOf(category) {
+      if(this.selection.length == 0) {
+        return 0;
+      }
       var n = 0;
       for(var i = 0; i < this.selection.length; i++){
         if(this.selection[i].category.localeCompare(category)) {
