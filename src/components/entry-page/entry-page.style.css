@@ -12,7 +12,7 @@
 
 .jumbotron .container {
   position:relative;
-  top:50px;
+  top:60px;
 
 }
 .lead {
@@ -79,7 +79,7 @@
   background-image: url('https://raw.githubusercontent.com/ragnhildneset/plan-your-holiday-frontend/master/src/img/Prague.jpg');
 
 
-  height: 140%;
+  height: 170%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -98,6 +98,7 @@
 
   background: rgba(100, 100, 100, 0.5);
 }
+<<<<<<< HEAD
 
 .navbar-fixed-bottom {
   position: relative!important;
@@ -111,3 +112,5 @@
 .text-center {
   color: rgb(0, 0, 0);
 }
+=======
+>>>>>>> 6c71566bcd92956633d7e82d1591d420aa631c16

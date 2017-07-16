@@ -45,9 +45,18 @@ class LoginPageComponentController
         let loginid = this.login.loginid;
         let password = this.login.password;
 
+
         this.UserService.login(loginid,password).then(()=> {
+
             this.$state.go('enter-journey',{});
-        });
+          })
+          .catch((e)=> {
+            if(e.status === 401) {
+              this.errormessage = "Login failed. Wrong username or password";
+            } else {
+              this.errormessage = "Unknown sever error.";
+            }
+          });
     }
 
     getStarted () {

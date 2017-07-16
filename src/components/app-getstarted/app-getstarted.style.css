@@ -26,7 +26,7 @@ input::-webkit-input-placeholder {
  	margin: 0 auto;
   border-top: 40px;
  	max-width: 500px;
-    padding: 5px 5% 0 5%;
+  padding: 5px 5% 0 5%;
 }
 
 .login-button {
