@@ -21,6 +21,11 @@ function resolveAttractions($stateParams,attractionsService){
     return attractionsService.city($stateParams.cityId);
 }
 
+resolveAttractionsDEV.$inject = [AttractionsService.name];
+function resolveAttractionsDEV(attractionsService){
+    return attractionsService.city('56aa0db353c8040f4cc54647');
+}
+
 resolveCities.$inject = [CityService.name];
 function resolveCities(cityService){
     return cityService.list();
@@ -63,6 +68,12 @@ export default function config ($stateProvider, $urlRouterProvider){
             component: CategorySelectionComponent.name,
             resolve: {
               attractions : resolveAttractions
+            }
+        }).state('DEVcategories', {
+            url: '/DEVcategories',
+            component: CategorySelectionComponent.name,
+            resolve: {
+              attractions : resolveAttractionsDEV
             }
         })
         .state('attractions', {

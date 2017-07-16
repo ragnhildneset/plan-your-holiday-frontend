@@ -41,10 +41,7 @@ class EditUserComponentController{
         let self = this;
         this.travels = this.TravelService.getbyUser(this.UserService.getCurrentUser().loginid).then(data => {
           self.travels = data;
-          console.log(this.travels);
         });
-        console.log(self.travels);
-        console.log(this.travels);
     }
 
     savedata() {
