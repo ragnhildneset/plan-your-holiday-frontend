@@ -5,7 +5,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col col-xs-6">
-                            <h3 class="panel-title">Find your schedule to <b>{{$ctrl.travel.destination}}</b> here, {{$ctrl.travel.username}} ({{$ctrl.travel.arrival}} to {{$ctrl.travel.departure}})</h3>
+                            <h3 class="panel-title">Find your schedule to <b>{{$ctrl.travel.destination}}</b> here, {{$ctrl.travel.username}} ({{$ctrl.travel.arrival | date: 'dd-MM-yyyy'}} to {{$ctrl.travel.departure| date: 'dd-MM-yyyy'}})</h3>
                         </div>
                     </div>
                 </div>

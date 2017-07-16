@@ -170,8 +170,8 @@ class CategorySelectionComponentController {
           var end = new Date(start);
           end.setMinutes(end.getMinutes() + this.selection[current].duration);
 
-          this.start = "" + start.getFullYear() + "." + start.getMonth() + "." + start.getDay() + " " + start.getHours() + ":" + start.getMinutes();
-          this.end = "" + end.getFullYear() + "." + end.getMonth() + "." + end.getDay() + " " + end.getHours() + ":" + end.getMinutes();
+          //this.start = "" + start.getFullYear() + "." + start.getMonth() + "." + start.getDay() + " " + start.getHours() + ":" + start.getMinutes();
+         // this.end = "" + end.getFullYear() + "." + end.getMonth() + "." + end.getDay() + " " + end.getHours() + ":" + end.getMinutes();
 
           var activity = {'attractionID': this.selection[current]._id,
               'url':this.selection[current].url,
@@ -186,7 +186,7 @@ class CategorySelectionComponentController {
 
       var username = "johndoe" + Math.random();
       if(this.UserService.isAuthenticated()) {
-        username = this.UserService.getCurrentUser().loginid;
+        username = this.UserService.getCurrentUser().username;
       }
 
       console.log("cityID: " + JSON.parse(this.$window.localStorage['journey']).cityId);
@@ -215,11 +215,14 @@ class CategorySelectionComponentController {
     }
 
     getBestOfCategory(category) {
+      if(category!=null)
+        {
       for(var i = 0; i < this.pool.length; i++) {
         if(this.pool[i].category == category) {
           return i;
         }
       }
+        }
       return -1;
     }
 
@@ -243,8 +246,10 @@ class CategorySelectionComponentController {
     getNumberOf(category) {
       var n = 0;
       for(var i = 0; i < this.selection.length; i++){
+        if(category!=null){
         if(this.selection[i].category.localeCompare(category)) {
           n = n + 1;
+        }
         }
       }
       return n;
