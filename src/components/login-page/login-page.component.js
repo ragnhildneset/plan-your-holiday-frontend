@@ -45,7 +45,7 @@ class LoginPageComponentController
         let user = this.login.username;
         let password = this.login.password;
 
-        this.UserService.login(user,password)
+        this.UserService.login(loginid,password)
           .then(()=> {
             this.$state.go('enter-journey',{});
           })

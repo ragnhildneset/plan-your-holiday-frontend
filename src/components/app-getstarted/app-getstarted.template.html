@@ -7,7 +7,7 @@
 
       <form name="register" method="post" action="#" novalidate>
   		<div class="form-group" ng-class2="{'has-success has-feedback': register.name.$valid}" ng-class="{ 'has-error': register.name.$touched && register.name.$invalid, 'has-success has-feedback': register.name.$valid } ">
-  			<label for="name" >Your Name</label>
+  			<label for="name" >First and Last Name</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -34,7 +34,7 @@
   		</div>
 
   		<div class="form-group" ng-class="{ 'has-error': register.username.$touched && register.username.$invalid , 'has-success has-feedback': register.username.$valid }">
-  			<label for="username">Username</label>
+  			<label for="username">Login ID</label>
   			<div class="cols-sm-10">
   				<div class="input-group">
   					<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
@@ -102,7 +102,7 @@
   		</div>
 
   		<div class="form-group ">
-  			<button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-disabled="register.$invalid" ng-click="$ctrl.signup(); $ctrl.enterJourney()">Register</button>
+  			<button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-disabled="register.$invalid" ng-click="$ctrl.signup()">Submit</button>
   		</div>
   		<div class="login-register">
   			<p> <small> Already got an account? </small></p>
