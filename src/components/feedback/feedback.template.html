@@ -15,12 +15,12 @@
                <br/>
                <h5><b>Quality</b></h5>
                <p>How well did you like the activity?</p>
-               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].quality" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating" required></span>
+               <span uib-rating ng-model="$ctrl.rating[activity.attractionname].quality" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating" required></span>
                <br/>
                <br/>
                <h5><b>Popularity</b></h5>
                 <p>How popular is this activity among tourists?</p>
-               <span uib-rating ng-model="$ctrl.rating[activity.attractionId].popularity" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating" required></span>
+               <span uib-rating ng-model="$ctrl.rating[activity.attractionname].popularity" max="5" read-only="isReadonly" on-leave="overStar = null" aria-labelledby="default-rating" required></span>
                <br/>
              </div>
           </div>

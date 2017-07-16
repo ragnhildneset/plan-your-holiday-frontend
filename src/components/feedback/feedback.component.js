@@ -40,10 +40,10 @@ class FeedbackComponentController{
       var schedule = this.travel.schedule;
       for (var i = 0; i < schedule.length; i++) {
         var attraction = {};
-        var id = schedule[i].attractionId;
-        attraction.attractionId = id;
-        attraction.quality = this.rating[id].quality;
-        attraction.popularity = this.rating[id].popularity;
+        var name = schedule[i].attractionname;
+        attraction.attractionname = name;
+        attraction.quality = this.rating[name].quality;
+        attraction.popularity = this.rating[name].popularity;
 
         ratings.push(attraction);
       }
