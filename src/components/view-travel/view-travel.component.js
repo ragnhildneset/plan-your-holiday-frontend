@@ -24,7 +24,7 @@ class ViewTravelComponentController{
         this.TravelService = TravelService;
         this.UserService = UserService;
 
-        console.log(this.travel);
+        //console.log(this.travel);
     }
 
     static get $inject(){
@@ -59,8 +59,9 @@ class ViewTravelComponentController{
         return posterURL;
     }
 
-    newtravel() {
-      console.log(this.travel);
+    getCurrentUser(){
+      let user = this.UserService.getCurrentUser();
+      return user.username;
     }
 
     rate() {

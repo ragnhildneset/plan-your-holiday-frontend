@@ -78,7 +78,7 @@
        <ul class="list-group">
            <a class="list-group-item" ng-repeat="travel in $ctrl.travels">
                <!-- <p> <a ng-click="$ctrl.viewTravel(travel)"> From {{travel.arrival}} to {{travel.departure}} </a> </p> -->
-               <p class="travellink" ng-click="$ctrl.viewTravel(travel)"> {{travel.destination}} ({{travel.arrival}} to {{travel.departure}}) </p>
+               <p class="travellink" ng-click="$ctrl.viewTravel(travel)"> {{travel.destination}} ({{travel.arrival | date: 'dd-MM-yyyy'}} to {{travel.departure | date: 'dd-MM-yyyy'}}) </p>
            </a>
        </ul>
      </div>

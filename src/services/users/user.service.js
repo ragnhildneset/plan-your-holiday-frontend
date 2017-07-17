@@ -52,6 +52,7 @@ export default class UserService {
 
     getPreferences(userid) {
         let url = this.resourceUrl + "getPreferences/" + userid;
+        console.log(url);
         return this.$http.get(url).then(response => {
             return new Promise((resolve, reject) => {
                 resolve(response.data);

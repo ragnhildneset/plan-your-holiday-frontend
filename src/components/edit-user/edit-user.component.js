@@ -22,7 +22,6 @@ class EditUserComponentController{
         this.$state = $state;
         this.UserService = UserService;
         this.TravelService = TravelService;
-
         this.UserService.getPreferences(this.UserService.getCurrentUser().loginid).then(data => {
           this.username = data.username;
           this.loginID = data.loginid;
@@ -30,7 +29,7 @@ class EditUserComponentController{
           this.email = data.email;
           this.birthday = new Date(data.birthday);
           console.log(this.birthday);
-          this.birthday = "" + this.birthday.getDate() + "." + (this.birthday.getMonth()+1) + "." + this.birthday.getFullYear();
+          this.birthday = this.birthday.getFullYear() + "-" + (this.birthday.getMonth()+1) + "-" + this.birthday.getDate();
 
           this.density = data.density;
           this.phonenumber = data.phonenumber;
@@ -47,7 +46,7 @@ class EditUserComponentController{
     }
 
     savedata() {
-      this.phonenumber = parseInt(document.getElementById("phone").value);
+      this.phonenumber = document.getElementById("phone").value;
       this.email = document.getElementById("mail").value;
       this.density = parseInt(document.getElementById("density").value);
 
@@ -60,8 +59,11 @@ class EditUserComponentController{
         "phonenumber": this.phonenumber
       }
 
-      this.UserService.setPreferences(this.UserService.getCurrentUser()._id, user);
-      document.getElementById("confirmation").style.visibility = "visible";
+      this.UserService.setPreferences(this.UserService.getCurrentUser()._id, user).then(data => {
+        if(data.status === 200) {
+          document.getElementById("confirmation").style.visibility = "visible";
+        }
+      })
     }
 
     logout() {

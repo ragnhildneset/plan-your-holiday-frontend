@@ -33,6 +33,12 @@ class EnterJourneyComponentController{
     }
 
     submit() {
+      for(var i = 0; i < this.cities.length; i++) {
+        if(this.cities[i]._id == this.journey.cityId) {
+          this.journey.cityname = this.cities[i].name;
+          console.log(this.journey.cityname);
+        }
+      }
         this.$window.localStorage['journey'] = JSON.stringify(this.journey);
 
         var _id = this.journey.cityId;

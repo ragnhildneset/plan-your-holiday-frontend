@@ -47,7 +47,6 @@ class LoginPageComponentController
 
 
         this.UserService.login(loginid,password).then(()=> {
-
             this.$state.go('enter-journey',{});
           })
           .catch((e)=> {

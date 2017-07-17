@@ -90,6 +90,7 @@ class CategorySelectionComponentController {
       }
 
       var requiredAttractions = this.duration * this.density;
+      console.log(requiredAttractions);
 
       this.sliderSelection = [$('#Monuments').val(), $('#Museums').val(), $('#Parks').val(), $('#Churches').val()];
       var sum = 0;
@@ -144,6 +145,7 @@ class CategorySelectionComponentController {
       this.removeAlreadySelected();
       this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
 
+      console.log(this.attractions);
       // adding the best attractions of each category to the fields until they required amount is reached
       while(this.getNumberOf("Monuments")<this.attractionWeight[0] && this.selection.length<(this.duration*this.density)) {
         this.selection.push(this.pool[this.getBestOfCategory("Monuments")]);
@@ -161,7 +163,6 @@ class CategorySelectionComponentController {
         this.selection.push(this.pool[this.getBestOfCategory("Churches")]);
         this.pool.splice(this.getBestOfCategory("Churches"), 1);
       }
-
       this.shuffleSelection(this.selection.length);
 
       // create a travel-object
@@ -174,8 +175,9 @@ class CategorySelectionComponentController {
         for(var j = 0; j < this.density; j++) {
           var start = 0;
           if(last == null) {
-            start = new Date(arrival.getDate() + 1);
-            start.setDate(arrival.getDate() + parseInt(i));
+            start = new Date(arrival);
+            start.setDate(arrival.getDate() + parseInt(i) + 1);
+            start.setHours(10);
           }
           else {
             start = new Date(last);
@@ -184,8 +186,17 @@ class CategorySelectionComponentController {
           var end = new Date(start);
           end.setMinutes(end.getMinutes() + this.selection[current].duration);
 
-          this.start = "" + start.getFullYear() + "." + start.getMonth() + "." + start.getDay() + " " + start.getHours() + ":" + start.getMinutes();
-          this.end = "" + end.getFullYear() + "." + end.getMonth() + "." + end.getDay() + " " + end.getHours() + ":" + end.getMinutes();
+          this.start = "" + start.getFullYear() + "-" + (start.getMonth()+1) + "-" + start.getDate() + " " + start.getHours() + ":";
+          if(start.getMinutes()<10) {
+            this.start = this.start + "0";
+          }
+          this.start = this.start + start.getMinutes();
+          this.end = "" + end.getFullYear() + "-" + (end.getMonth()+1) + "-" + end.getDate() + " " + end.getHours() + ":";
+          if(end.getMinutes()<10) {
+            this.end = this.end + "0";
+          }
+          this.end = this.end + end.getMinutes();
+
 
           var activity = {'attractionID': this.selection[current]._id,
               'url':this.selection[current].url,
@@ -206,7 +217,7 @@ class CategorySelectionComponentController {
       console.log("cityID: " + JSON.parse(this.$window.localStorage['journey']).cityId);
       var travel = {
           'username': username,
-          'destination': JSON.parse(this.$window.localStorage['journey']).cityId,
+          'destination': JSON.parse(this.$window.localStorage['journey']).cityname,
           'arrival': arrival,
           'departure': departure,
           'schedule': schedule

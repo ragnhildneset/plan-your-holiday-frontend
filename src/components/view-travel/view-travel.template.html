@@ -4,9 +4,7 @@
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col col-xs-6">
-                            <h3 class="panel-title">Find your schedule to <b>{{$ctrl.travel.destination}}</b> here, {{$ctrl.travel.username}} ({{$ctrl.travel.arrival}} to {{$ctrl.travel.departure}})</h3>
-                        </div>
+                        <h3 class="panel-title">Find your schedule to <b>{{$ctrl.travel.destination}}</b> here, {{$ctrl.getCurrentUser()}} ({{$ctrl.travel.arrival | date: 'dd-MM-yyyy'}} to {{$ctrl.travel.departure | date: 'dd-MM-yyyy'}})</h3>
                     </div>
                 </div>
 
@@ -34,35 +32,15 @@
                 <div class="panel-footer">
                   Find all your existing Travels in your User Profile.
                     <div class="row">
-
                         <div class="col col-xs-3">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-plus"
-                                          aria-hidden="true"></span>
-                                    Add row
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col col-xs-3">
-                            <div class="pull-right">
                                 <button type="button" ng-click="$ctrl.rate()" class="btn btn-primary">
                                     Rate
                                 </button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <p class="navbar-text">A simple example of how-to put a bordered table within a panel. Responsive, place
-                    holders in header/footer
-                    for buttons or pagination.</p>
-            </div>
-        </nav>
-    </div>
+
 </div>

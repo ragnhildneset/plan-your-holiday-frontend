@@ -48,8 +48,8 @@ class FeedbackComponentController{
         ratings.push(attraction);
       }
       this.AttractionsService.rate(ratings).then(()=> {
-          this.$state.go('home');
-        })
+          this.$state.go('enter-journey');
+      })
     }
 }
 
