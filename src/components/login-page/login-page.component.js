@@ -50,7 +50,7 @@ class LoginPageComponentController
             this.$state.go('enter-journey',{});
           })
           .catch((e)=> {
-            if(e.status === 401) {
+            if(e.status == 401) {
               this.errormessage = "Login failed. Wrong username or password";
             } else {
               this.errormessage = "Unknown sever error.";
