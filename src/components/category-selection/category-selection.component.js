@@ -90,7 +90,6 @@ class CategorySelectionComponentController {
       }
 
       var requiredAttractions = this.duration * this.density;
-      console.log(requiredAttractions);
 
       this.sliderSelection = [$('#Monuments').val(), $('#Museums').val(), $('#Parks').val(), $('#Churches').val()];
       var sum = 0;
@@ -119,7 +118,6 @@ class CategorySelectionComponentController {
         }
       }
 
-
       // Within these arrays all the relevant attractions for the schedule are stored
       this.monuments = [];
       this.museums = [];
@@ -144,8 +142,8 @@ class CategorySelectionComponentController {
       this.pool = this.attractions.slice();
       this.removeAlreadySelected();
       this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
+      this.printWeights();
 
-      console.log(this.attractions);
       // adding the best attractions of each category to the fields until they required amount is reached
       while(this.getNumberOf("Monuments")<this.attractionWeight[0] && this.selection.length<(this.duration*this.density)) {
         this.selection.push(this.pool[this.getBestOfCategory("Monuments")]);
@@ -233,7 +231,7 @@ class CategorySelectionComponentController {
       for(var i = 0; i < all.length; i++) {
         for(var j = 0; j < this.pool.length; j++) {
           if(all[i]._id == this.pool[j]._id) {
-            this.pool.splice(i, 1);
+            this.pool.splice(j, 1);
           }
         }
       }
@@ -274,7 +272,7 @@ class CategorySelectionComponentController {
       }
       var n = 0;
       for(var i = 0; i < this.selection.length; i++){
-        if(this.selection[i].category.localeCompare(category)) {
+        if(this.selection[i].category == category) {
           n = n + 1;
         }
       }
