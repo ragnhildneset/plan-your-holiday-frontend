@@ -142,22 +142,25 @@ class CategorySelectionComponentController {
       this.pool = this.attractions.slice();
       this.removeAlreadySelected();
       this.selection = this.monuments.concat(this.museums).concat(this.parks).concat(this.churches);
-      this.printWeights();
 
       // adding the best attractions of each category to the fields until they required amount is reached
       while(this.getNumberOf("Monuments")<this.attractionWeight[0] && this.selection.length<(this.duration*this.density)) {
+        if(this.getBestOfCategory("Monuments") == -1) { break; }
         this.selection.push(this.pool[this.getBestOfCategory("Monuments")]);
         this.pool.splice(this.getBestOfCategory("Monuments"), 1);
       }
       while(this.getNumberOf("Museums")<this.attractionWeight[1] && this.selection.length<(this.duration*this.density)) {
+        if(this.getBestOfCategory("Museums") == -1) { break; }
         this.selection.push(this.pool[this.getBestOfCategory("Museums")]);
         this.pool.splice(this.getBestOfCategory("Museums"), 1);
       }
       while(this.getNumberOf("Parks")<this.attractionWeight[2] && this.selection.length<(this.duration*this.density)) {
+        if(this.getBestOfCategory("Parks") == -1) { break; }
         this.selection.push(this.pool[this.getBestOfCategory("Parks")]);
         this.pool.splice(this.getBestOfCategory("Parks"), 1);
       }
       while(this.getNumberOf("Churches")<this.attractionWeight[3] && this.selection.length<(this.duration*this.density)) {
+        if(this.getBestOfCategory("Churches") == -1) { break; }
         this.selection.push(this.pool[this.getBestOfCategory("Churches")]);
         this.pool.splice(this.getBestOfCategory("Churches"), 1);
       }
@@ -166,7 +169,6 @@ class CategorySelectionComponentController {
       // create a travel-object
       var schedule = [];
       var current = 0;
-      //console.log("calculating for " + this.duration + " days and density " + this.density);
       // calculate the schedule
       for(var i = 0; i < this.duration; i++) {
         var last = null;
@@ -182,28 +184,32 @@ class CategorySelectionComponentController {
             start.setHours(start.getHours() + 1);
           }
           var end = new Date(start);
-          end.setMinutes(end.getMinutes() + this.selection[current].duration);
 
-          this.start = "" + start.getFullYear() + "-" + (start.getMonth()+1) + "-" + start.getDate() + " " + start.getHours() + ":";
-          if(start.getMinutes()<10) {
-            this.start = this.start + "0";
+          if(current < this.selection.length) {
+            end.setMinutes(end.getMinutes() + this.selection[current].duration);
+
+            this.start = "" + start.getFullYear() + "-" + (start.getMonth()+1) + "-" + start.getDate() + " " + start.getHours() + ":";
+            if(start.getMinutes()<10) {
+              this.start = this.start + "0";
+            }
+            this.start = this.start + start.getMinutes();
+            this.end = "" + end.getFullYear() + "-" + (end.getMonth()+1) + "-" + end.getDate() + " " + end.getHours() + ":";
+            if(end.getMinutes()<10) {
+              this.end = this.end + "0";
+            }
+            this.end = this.end + end.getMinutes();
+
+
+            var activity = {'attractionID': this.selection[current]._id,
+                'url':this.selection[current].url,
+                'attractionname': this.selection[current].title,
+                'startTime': this.start,
+                'endTime': this.end};
+            last = end;
+            schedule[i*this.density + j] = activity;
+            current = current + 1;
           }
-          this.start = this.start + start.getMinutes();
-          this.end = "" + end.getFullYear() + "-" + (end.getMonth()+1) + "-" + end.getDate() + " " + end.getHours() + ":";
-          if(end.getMinutes()<10) {
-            this.end = this.end + "0";
-          }
-          this.end = this.end + end.getMinutes();
-
-
-          var activity = {'attractionID': this.selection[current]._id,
-              'url':this.selection[current].url,
-              'attractionname': this.selection[current].title,
-              'startTime': this.start,
-              'endTime': this.end};
-          last = end;
-          schedule[i*this.density + j] = activity;
-          current = current + 1;
+          else { break; }
         }
       }
 
@@ -212,7 +218,6 @@ class CategorySelectionComponentController {
         username = this.UserService.getCurrentUser().loginid;
       }
 
-      console.log("cityID: " + JSON.parse(this.$window.localStorage['journey']).cityId);
       var travel = {
           'username': username,
           'destination': JSON.parse(this.$window.localStorage['journey']).cityname,
